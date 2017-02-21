@@ -1,68 +1,124 @@
+
+<style>
+
+    /*GLOBAL CSS*/
+
+    body {
+        background: #2c3e50 !important;
+    }
+
+    .navbar-default {
+        background-color: transparent !important;
+        border-color: transparent !important;
+    }
+
+    .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+        color: white !important;
+        background-color: transparent;
+    }
+
+    .navbar-default .navbar-nav>li>a, .navbar-default .navbar-text {
+        color: white !important;
+        text-align: center;
+    }
+
+    .navbar-default .navbar-brand {
+        color: white !important;
+    }
+
+    .navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+        color: white !important;
+        background-color: transparent;
+    }
+
+    /*END GLOBAL CSS*/
+
+    .container-login {
+        display: table;
+        height: 85%;
+        width: 100%;
+    }
+        .inner-container-login {
+            display: table-cell;
+            vertical-align: middle;
+        }
+
+            .body-container {
+                margin: auto;
+            }
+                .img-logo-company {
+                    height: 151px;
+                    width: 324px;
+                    border: 1px solid;
+                    margin: auto;
+                }
+
+                .container-form {
+                    margin: auto;
+                    width: 296px;
+                    margin-top: 37px;
+                }
+                    .customize-input{
+                        text-align: center;
+                        background-color: #2c3e50 !important;
+                        color: white !important;
+                        border: none !important;
+                        border-bottom: 1px solid white !important;
+                        border-radius: 0px !important;
+                        box-shadow: 0 0 0 0px !important;
+                    }
+
+                    .center {
+                       text-align: center;
+                    }
+
+                     button.btn.btn-primary.customize-button{
+                         background: #c0392b;
+                         border: none;
+                         width: 327px;
+                    }
+
+</style>
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
-                        {{ csrf_field() }}
+  <div class="container-login">
+    <div class="inner-container-login">
+        <div class="body-container">
+            <div class="img-logo-company"></div>
+            <div class="container-form">
+                <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
 
-                        <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
+                    {{ csrf_field() }}
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required autofocus>
-
-                                @if ($errors->has('email'))
+                    <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
+                        <input id="email" type="email" class="form-control customize-input" name="email" value="{{ old('email') }}" placeholder="Username" required autofocus>
+                        @if ($errors->has('email'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('email') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
+                        @endif
+                    </div>
 
-                        <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                            <label for="password" class="col-md-4 control-label">Password</label>
+                    <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
+                        <input id="password" type="password" class="form-control customize-input" name="password" placeholder="Password" required>
 
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
-
-                                @if ($errors->has('password'))
+                        @if ($errors->has('password'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('password') }}</strong>
                                     </span>
-                                @endif
-                            </div>
-                        </div>
+                        @endif
+                    </div>
 
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : ''}}> Remember Me
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
+                    <div class="form-group center">
+                        <button type="submit" class="btn btn-primary customize-button">
+                            Login
+                        </button>
+                    </div>
 
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">
-                                    Forgot Your Password?
-                                </a>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
     </div>
-</div>
+  </div>
 @endsection
