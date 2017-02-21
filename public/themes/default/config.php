@@ -67,6 +67,13 @@ return array(
             // {
             //     $view->with('auth', Auth::user());
             // });
+
+             $theme->asset()->add('jquery', 'assets/js/jquery.min.js');
+             $theme->asset()->add('bootstrap.js', 'assets/js/bootstrap.min.js');
+
+             $theme->asset()->add('bootstrap.css', 'assets/css/bootstrap.min.css');
+
+
         },
 
         // Listen on event before render a layout,
