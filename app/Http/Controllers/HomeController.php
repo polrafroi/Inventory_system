@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Theme;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $theme = Theme::uses('default')->layout('default')->setTitle('M');
+        return $theme->of('dashboard')->render();
     }
 }
