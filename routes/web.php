@@ -11,11 +11,11 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
-//
-//Auth::routes();
+Route::get('/', function () {
+   return view('welcome');
+});
+
+Auth::routes();
 
 Route::get('/home', 'HomeController@index');
 
@@ -23,3 +23,7 @@ Route::get('/home', 'HomeController@index');
 
 //products
 Route::get('/loadProduct', 'ProductController@loadProduct');
+
+
+//View
+Route::get('/gmaps', 'MapController@gmaps');
