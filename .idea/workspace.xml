@@ -50,19 +50,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="web.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="49" selection-start="864" selection-end="864" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="510">
+            <state line="36" column="52" selection-start="898" selection-end="898" vertical-scroll-proportion="0.5931624" vertical-offset="112" max-vertical-offset="697">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProductController.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ProductController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="53" column="78" selection-start="1761" selection-end="1761" vertical-scroll-proportion="0.5541958" vertical-offset="584" max-vertical-offset="1190">
+            <state line="53" column="78" selection-start="1761" selection-end="1761" vertical-scroll-proportion="-10.884615" vertical-offset="618" max-vertical-offset="1190">
               <folding>
                 <element signature="e#40#53#0" expanded="true" />
               </folding>
@@ -127,10 +127,10 @@
         <option value="$PROJECT_DIR$/public/assets/js/plugins/datatables/responsive.bootstrap.min.js" />
         <option value="$PROJECT_DIR$/public/themes/default/config.php" />
         <option value="$PROJECT_DIR$/resources/views/dashboard.blade.php" />
-        <option value="$PROJECT_DIR$/routes/web.php" />
         <option value="$PROJECT_DIR$/resources/views/productout.blade.php" />
         <option value="$PROJECT_DIR$/app/Temp.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
+        <option value="$PROJECT_DIR$/routes/web.php" />
       </list>
     </option>
   </component>
@@ -477,7 +477,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="7" />
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -816,13 +816,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="49" selection-start="864" selection-end="864" vertical-scroll-proportion="-14.384615" vertical-offset="0" max-vertical-offset="510">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Temp.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="1" selection-start="249" selection-end="249" vertical-scroll-proportion="-10.461538" vertical-offset="0" max-vertical-offset="374">
@@ -848,10 +841,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="53" column="78" selection-start="1761" selection-end="1761" vertical-scroll-proportion="0.5541958" vertical-offset="584" max-vertical-offset="1190">
+        <state line="53" column="78" selection-start="1761" selection-end="1761" vertical-scroll-proportion="-10.884615" vertical-offset="618" max-vertical-offset="1190">
           <folding>
             <element signature="e#40#53#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/web.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="52" selection-start="898" selection-end="898" vertical-scroll-proportion="0.5931624" vertical-offset="112" max-vertical-offset="697">
+          <folding />
         </state>
       </provider>
     </entry>
