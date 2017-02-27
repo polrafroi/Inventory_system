@@ -27,4 +27,13 @@ class HomeController extends Controller
         $theme = Theme::uses('default')->layout('default')->setTitle('M');
         return $theme->of('dashboard')->render();
     }
+
+    public function real(Request $request){
+
+        $theme = Theme::uses('default')->layout('default')->setTitle('M');
+        $data = [
+            $case_id = $request->case_id
+        ];
+        return $theme->of('realtime', $data)->render();
+    }
 }

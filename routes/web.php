@@ -14,7 +14,7 @@
 Route::get('/', function () {
    return view('welcome');
 });
-
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
@@ -27,3 +27,6 @@ Route::get('/loadProduct', 'ProductController@loadProduct');
 
 //View
 Route::get('/gmaps', 'MapController@gmaps');
+
+
+Route::get('/realtimeDb', 'MapController@real');
