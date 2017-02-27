@@ -17,9 +17,7 @@ class ProductController extends Controller
         $productList = Products::all();
         $btn_edit = '<i class="glyphicon glyphicon-pencil"></i>';
         $btn_delete = '<i class="glyphicon glyphicon-remove"></i>';
-
         $data  = array();
-
         foreach ($productList as $key => $val){
             array_push($data,['id'=>$val->id,'brand'=>$val->brand,'category'=>$val->category,'code'=>$val->code,'description'=>$val->description,'unit'=>$val->unit,'qty'=>$val->qty,'unit_price'=>$val->unit_price,'action'=>$btn_edit.'   '.$btn_delete]);
         }
@@ -47,18 +45,25 @@ class ProductController extends Controller
     public function addToList(Request $request){
         $product_id = $request->product_id;
         $qty = $request->qty;
-        Temp::insert(['product_id'=>$product_id,'qty'=>$qty]);
+
+        $getOldQty = Products::where('id',$product_id)->first()->qty;
+        $newQty = ($getOldQty - $qty);
+
+        DB::table('products')->where('id',$product_id)->update(['qty'=>$newQty]);
+        Temp::insert(['product_id'=>$product_id,'product_qty'=>$qty]);
+
+
     }
 
     public function getTemp(){
         $productList = DB::table('temp')->select('temp.temp_id','temp.product_qty','products.*')->join('products','products.id','temp.product_id')->get();
-        $btn_delete = '<i class="glyphicon glyphicon-remove"></i>';
-        $data  = array();
-        dd($productList);
-        foreach ($productList as $key => $val){
-            array_push($data,['id'=>$val->id,'brand'=>$val->brand,'category'=>$val->category,'code'=>$val->code,'description'=>$val->description,'unit'=>$val->unit,'qty'=>$val->qty,'unit_price'=>$val->unit_price,'action'=>$btn_delete]);
-        }
 
+        $data  = array();
+
+        foreach ($productList as $key => $val){
+            $btn_delete = '<i class="glyphicon glyphicon-remove" data-id="'.$val->temp_id.'"></i>';
+            array_push($data,['id'=>$val->temp_id,'brand'=>$val->brand,'category'=>$val->category,'code'=>$val->code,'description'=>$val->description,'unit'=>$val->unit,'qty'=>$val->product_qty,'unit_price'=>$val->unit_price,'action'=>$btn_delete]);
+        }
         return json_encode(['data'=>$data]);
     }
 }
