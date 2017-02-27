@@ -67,24 +67,20 @@ return array(
             // {
             //     $view->with('auth', Auth::user());
             // });
-
-             $theme->asset()->add('jquery', 'assets/js/jquery.js');
-             $theme->asset()->add('bootstrap.js', 'assets/js/bootstrap.min.js');
-
-             $theme->asset()->add('bootstrap.css', 'assets/css/bootstrap.min.css');
-
-
-
+            $theme->asset()->add('jquery', 'assets/js/jquery.js');
+            $theme->asset()->add('bootstrap.min.js', 'assets/js/bootstrap.min.js');
+            $theme->asset()->add('bootstrap.min.css', 'assets/css/bootstrap.min.css');
 
             //datatables
-            $theme->asset()->add('datatables.js', 'assets/js/plugins/datatables/datatables.min.js');
-            $theme->asset()->add('responsive-datatables.js', 'assets/js/plugins/datatables/responsive.datatables.min.js');
-            $theme->asset()->add('responsive-bootstrap.js', 'assets/js/plugins/datatables/responsive.bootstrap.min.js');
+            //css
+            $theme->asset()->add('dataTables.bootstrap.min.css', 'assets/css/plugins/datatables/dataTables.bootstrap.min.css');
+            $theme->asset()->add('responsive.bootstrap.min.css', 'assets/css/plugins/datatables/responsive.bootstrap.min.css');
 
-            $theme->asset()->add('datatables.css', 'assets/css/plugins/datatables/datatables.min.css');
-            $theme->asset()->add('datatables-bootstrap.css', 'assets/css/plugins/datatables/datatables.bootstrap.min.css');
-            $theme->asset()->add('responsive-datatables.css', 'assets/css/plugins/datatables/responsive.bootstrap.min.css');
-
+            //js
+            $theme->asset()->add('jquery.dataTables.min.js', 'assets/js/plugins/datatables/jquery.dataTables.min.js');
+            $theme->asset()->add('dataTables.bootstrap.min.js', 'assets/js/plugins/datatables/dataTables.bootstrap.min.js');
+            $theme->asset()->add('dataTables.responsive.min.js', 'assets/js/plugins/datatables/dataTables.responsive.min.js');
+            $theme->asset()->add('responsive.bootstrap.min.js', 'assets/js/plugins/datatables/responsive.bootstrap.min.js');
 
 
         },
