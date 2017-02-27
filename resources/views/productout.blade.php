@@ -150,6 +150,8 @@
 
         loadProduct();
         loadDataList();
+
+
         var search_table = $('#search-table').DataTable();
 
         //remove search to create your own
@@ -246,8 +248,7 @@
                     "action": '<i class="glyphicon glyphicon-remove"></i>'
                 }).draw();
 
-
-                dTable1.fnPageChange('last');
+                $('#list-table').dataTable().fnPageChange('last');
 
                 search_table.ajax.reload();
 
@@ -278,6 +279,12 @@
             bDestroy: true,
             "order": []
         });
+
+        dTable1.page('last').draw(false);
+
+
+
+
 
     }
 
