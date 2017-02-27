@@ -12,13 +12,9 @@
 */
 
 Route::get('/', function () {
-
-    return view('welcome');
-
    return view('welcome');
-
 });
-
+Route::get('logout', '\App\Http\Controllers\Auth\LoginController@logout');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
@@ -28,17 +24,9 @@ Route::get('/home', 'HomeController@index');
 //products
 Route::get('/loadProduct', 'ProductController@loadProduct');
 
-Route::post('/addProduct', 'ProductController@addProduct');
-
-Route::get('/productout', 'ProductController@productOut');
-
-Route::post('/addToList', 'ProductController@addToList');
-
-Route::get('/getTemp', 'ProductController@getTemp');
-
-
-
 
 //View
 Route::get('/gmaps', 'MapController@gmaps');
 
+
+Route::get('/realtimeDb', 'MapController@real');
