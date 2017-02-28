@@ -12,6 +12,7 @@
         border-radius: 0;
         outline: 0;
         height: 27px;
+        font-size: 12px;
     }
     .form-group .btn{
         height: 33px;
@@ -32,7 +33,7 @@
         outline: none;
     }
 
-    tbody tr{
+    #search-table tbody tr{
         cursor: pointer;
     }
 
@@ -92,8 +93,6 @@
                 <label>Unit Price</label>
                 <input type="text" class="form-control" id="unit_price">
 
-
-
                 <label class="input-qty">Input quantity</label>
                 <input type="text" class="form-control" id="input-qty">
 
@@ -151,6 +150,8 @@
 
         loadProduct();
         loadDataList();
+
+
         var search_table = $('#search-table').DataTable();
 
         //remove search to create your own
@@ -176,13 +177,12 @@
 
             $('#id').val($(this).children('td:nth-child(1)').text())
             $('#brand').val($(this).children('td:nth-child(2)').text())
-            $('#category').val($(this).children('td:nth-child(2)').text())
-            $('#code').val($(this).children('td:nth-child(2)').text())
-            $('#brand').val($(this).children('td:nth-child(2)').text())
-            $('#description').val($(this).children('td:nth-child(2)').text())
-            $('#unit').val($(this).children('td:nth-child(2)').text())
-            $('#qty').val($(this).children('td:nth-child(2)').text())
-            $('#unit_price').val($(this).children('td:nth-child(2)').text())
+            $('#category').val($(this).children('td:nth-child(3)').text())
+            $('#code').val($(this).children('td:nth-child(4)').text())
+            $('#description').val($(this).children('td:nth-child(5)').text())
+            $('#unit').val($(this).children('td:nth-child(6)').text())
+            $('#qty').val($(this).children('td:nth-child(7)').text())
+            $('#unit_price').val($(this).children('td:nth-child(8)').text())
             $('#input-qty').focus();
             $('.search').css('left','-9999px');
 
@@ -194,6 +194,7 @@
 
         $('.btn').on( 'click', function () {
             addtolist()
+
         });
 
 
@@ -222,7 +223,10 @@
     function addtolist(){
         var BASEURL = $('#baseURL').val();
 
+        var search_table = $('#search-table').DataTable();
+
         var dTable1 = $('#list-table').DataTable();
+
         $.ajax({
             url:BASEURL+'/addToList',
             type:'POST',
@@ -232,6 +236,7 @@
                 'qty':$('#input-qty').val()
             },
             success: function(data){
+
                 dTable1.row.add({
                     "brand": $('#brand').val(),
                     "category": $('#category').val(),
@@ -242,7 +247,15 @@
                     "unit_price":   $('#unit_price').val(),
                     "action": '<i class="glyphicon glyphicon-remove"></i>'
                 }).draw();
-                $('#add-list')[0].reset();
+
+                $('#list-table').dataTable().fnPageChange('last');
+
+                search_table.ajax.reload();
+
+                $('.add-list')[0].reset();
+                $('#search-product').focus();
+
+
             }
         });
     }
@@ -251,7 +264,7 @@
     function loadDataList(){
         var BASEURL = $('#baseURL').val();
 
-        $('#list-table').DataTable({
+        var dTable1=$('#list-table').DataTable({
             ajax: BASEURL + '/getTemp',
             columns:[
                 {data: 'brand'},
@@ -266,7 +279,25 @@
             bDestroy: true,
             "order": []
         });
+
+        dTable1.page('last').draw(false);
+
+
+
+
+
     }
+
+    jQuery.fn.dataTable.Api.register( 'page.jumpToData()', function ( data, column ) {
+        var pos = this.column(column, {order:'current'}).data().indexOf( data );
+
+        if ( pos >= 0 ) {
+            var page = Math.floor( pos / this.page.info().length );
+            this.page( page ).draw( false );
+        }
+
+        return this;
+    } );
 
 
 

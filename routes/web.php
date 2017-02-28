@@ -23,6 +23,14 @@ Route::get('/home', 'HomeController@index');
 
 //products
 Route::get('/loadProduct', 'ProductController@loadProduct');
+Route::post('/addProduct', 'ProductController@addProduct');
+
+Route::get('/productout', 'ProductController@productOut');
+
+Route::post('/addToList', 'ProductController@addToList');
+
+Route::get('/getTemp', 'ProductController@getTemp');
+
 
 
 //View
