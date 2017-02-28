@@ -30,3 +30,6 @@ Route::get('/gmaps', 'MapController@gmaps');
 
 
 Route::get('/realtimeDb', 'MapController@real');
+
+
+Route::get('/graphs', 'GraphController@graphs');
