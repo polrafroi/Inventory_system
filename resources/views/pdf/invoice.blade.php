@@ -22,10 +22,6 @@
     table tbody tr td{
         padding: 5px 0px;
     }
-
-    .header-container{
-        position: fixed; left: 0px; top: -100px; right: 0px; height: 150px; background-color: orange; text-align: center;
-    }
     .text-center{
         text-align: center;
     }
@@ -35,8 +31,21 @@
 
 </style>
 
-<?php  $i = 1; ?>
 
+
+<div class="header-container">
+    <div class="header text-center">
+        <h1>Title</h1>
+        <div class="sub-header">
+            <h3>Title</h3>
+        </div>
+    </div>
+    <div class="header-info">
+        <div class="inv-number">
+
+        </div>
+    </div>
+</div>
 
 <table class="table" id="sample" width="100%">
     <thead>
@@ -51,7 +60,6 @@
     </tr>
     </thead>
     <tbody>
-
     @foreach ($products as $key => $val)
 
     <tr>
@@ -65,9 +73,7 @@
     </tr>
     @endforeach
 
+
     </tbody>
 </table>
-
-
-
 

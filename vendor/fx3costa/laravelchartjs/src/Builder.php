@@ -44,15 +44,6 @@ class Builder
     ];
 
     /**
-     * @param array $size
-     *
-     * @return Builder
-     */
-    public function size($size)
-    {
-        return $this->set('size', $size);
-    }
-    /**
      * @param $name
      *
      * @return $this|Builder

@@ -36,12 +36,14 @@ class PdfController extends Controller
 //            $i++;
 //        }
 
+        $product_id = DB::table('temp')->orderBy('temp_id')->take(5)->pluck('temp_id');
+
+
 
 
 
         $pdf = PDF::loadView('pdf.invoice',['products'=>$products])->setPaper('a4')->setWarnings(false);
         return $pdf->stream();
-
 
 
 

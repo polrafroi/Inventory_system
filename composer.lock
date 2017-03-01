@@ -4,10 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "4a1ed1bb555b395b24d2d0a999f0865b",
-    "content-hash": "f337f08650eb9385ab89f9feccfdd763",
-    "hash": "f36b0f1459604b9a41e3302ee0463fa0",
-    "content-hash": "74eff32766931114bc085896326367b6",
+    "hash": "33eb9077a5f35ecf3d7f383315374c47",
+    "content-hash": "2330e17fb932edbb92b2d30e718475ee",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -212,7 +210,6 @@
             "time": "2015-11-06 14:35:42"
         },
         {
-<<<<<<< HEAD
             "name": "dompdf/dompdf",
             "version": "v0.7.0",
             "source": {
@@ -272,7 +269,8 @@
             "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
             "homepage": "https://github.com/dompdf/dompdf",
             "time": "2016-05-11 00:36:29"
-=======
+        },
+        {
             "name": "fx3costa/laravelchartjs",
             "version": "2.2.1",
             "source": {
@@ -316,7 +314,6 @@
                 "reports"
             ],
             "time": "2017-02-09 14:17:49"
->>>>>>> 0cb4c0042c44d43b08c1c03961537ea77f2aba9e
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1065,16 +1062,16 @@
         },
         {
             "name": "psy/psysh",
-            "version": "v0.8.1",
+            "version": "v0.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/bobthecow/psysh.git",
-                "reference": "701e8a1cc426ee170f1296f5d9f6b8a26ad25c4a"
+                "reference": "97113db4107a4126bef933b60fea6dbc9f615d41"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/701e8a1cc426ee170f1296f5d9f6b8a26ad25c4a",
-                "reference": "701e8a1cc426ee170f1296f5d9f6b8a26ad25c4a",
+                "url": "https://api.github.com/repos/bobthecow/psysh/zipball/97113db4107a4126bef933b60fea6dbc9f615d41",
+                "reference": "97113db4107a4126bef933b60fea6dbc9f615d41",
                 "shasum": ""
             },
             "require": {
@@ -1134,7 +1131,7 @@
                 "interactive",
                 "shell"
             ],
-            "time": "2017-01-15 17:54:13"
+            "time": "2017-03-01 00:13:29"
         },
         {
             "name": "ramsey/uuid",
@@ -2370,16 +2367,16 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "0.9.8",
+            "version": "0.9.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "1e5e2ffdc4d71d7358ed58a6fdd30a4a0c506855"
+                "reference": "6fdb61243844dc924071d3404bb23994ea0b6856"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/1e5e2ffdc4d71d7358ed58a6fdd30a4a0c506855",
-                "reference": "1e5e2ffdc4d71d7358ed58a6fdd30a4a0c506855",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/6fdb61243844dc924071d3404bb23994ea0b6856",
+                "reference": "6fdb61243844dc924071d3404bb23994ea0b6856",
                 "shasum": ""
             },
             "require": {
@@ -2431,7 +2428,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2017-02-09 13:29:38"
+            "time": "2017-02-28 12:52:32"
         },
         {
             "name": "myclabs/deep-copy",
