@@ -14,35 +14,17 @@ class PdfController extends Controller
 
         $products = DB::table('products')->join('temp','temp.product_id','products.id')
                              ->select('temp.product_qty','products.*')
-                             ->limit(25)
-                             ->get();
-
-//        $products = DB::table('products')->join('temp','temp.product_id','products.id')
-//            ->select('temp.product_qty','products.*')
-//            ->count();
-//
-//        $totalCount = 0;
-//        $getRemaining =  ($products % 25);
-//        $getPageCount =  (int) ($products / 25);
-//        if($getRemaining < 25){
-//            $totalCount++;
-//        }
-//        $totalCount = $totalCount+ $getPageCount;
-//
-//        $arr = [];
-//        $i = 0;
-//        while($i < $totalCount){
-//            array_push($arr,$products1);
-//            $i++;
-//        }
-
-        $product_id = DB::table('temp')->orderBy('temp_id')->take(5)->pluck('temp_id');
+                             ->get()->chunk(25);
 
 
+        $product_arr = [];
 
+        foreach($products as $key=> $val){
 
+            array_push($product_arr,$val);
+        }
 
-        $pdf = PDF::loadView('pdf.invoice',['products'=>$products])->setPaper('a4')->setWarnings(false);
+        $pdf = PDF::loadView('pdf.invoice',['products'=>$product_arr])->setPaper('a4')->setWarnings(false);
         return $pdf->stream();
 
 

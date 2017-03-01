@@ -1,6 +1,31 @@
 
 <style>
 
+    @page {
+        margin: 150px 50px;
+    }
+    #header {
+        position: fixed;
+        left: 0px;
+        top: -130px;
+        right: 0px;
+        height: 100px;
+        background-color: orange;
+        text-align: center;
+        margin-bottom: 10;
+    }
+
+    #footer{
+        position: fixed;
+        left: 0px;
+        bottom: -120px;
+        right: 0px;
+        height: 100px;
+        background-color: orange;
+        text-align: center;
+        margin-bottom: 10;
+    }
+
     h1,h3{
         margin: 0;
         padding: 0;
@@ -10,13 +35,14 @@
         border-collapse: collapse;
         text-align: center;
         border: 1px solid black;
+        font-size: 12px;
     }
 
       thead tr th {
         border: 1px solid black;
          padding: 10px 0px;
          text-transform: uppercase;
-         font-size: 12px;
+
     }
 
     table tbody tr td{
@@ -33,7 +59,7 @@
 
 
 
-<div class="header-container">
+<div id="header">
     <div class="header text-center">
         <h1>Title</h1>
         <div class="sub-header">
@@ -46,7 +72,9 @@
         </div>
     </div>
 </div>
-
+<?php $ctr= 0; ?>
+@foreach ($products as $key => $product)
+<?php $ctr++; ?>
 <table class="table" id="sample" width="100%">
     <thead>
     <tr>
@@ -60,7 +88,7 @@
     </tr>
     </thead>
     <tbody>
-    @foreach ($products as $key => $val)
+    @foreach ($product as $key => $val)
 
     <tr>
         <td>{{ $val->brand }}</td>
@@ -76,4 +104,10 @@
 
     </tbody>
 </table>
+    @if($ctr < count($products))
+        <div class="page-break"></div>
+    @endif
+@endforeach
+
+
 
