@@ -152,7 +152,7 @@
         loadDataList();
 
 
-        var search_table = $('#search-table').DataTable();
+
 
         //remove search to create your own
         $('#search-table_filter input').unbind();
@@ -162,7 +162,7 @@
         $('#search-table_wrapper .dataTables_length').hide()
 
         $('#search-product').on('input', function(e) {
-
+            var search_table = $('#search-table').DataTable();
             if($('#search-product').val().length > 0){
                 $('.search').css('left','0');
                 search_table.search( this.value ).draw();
@@ -173,8 +173,6 @@
 
 
         $('body').delegate('#search-table tbody tr','dblclick',function(){
-
-
             $('#id').val($(this).children('td:nth-child(1)').text())
             $('#brand').val($(this).children('td:nth-child(2)').text())
             $('#category').val($(this).children('td:nth-child(3)').text())
@@ -186,11 +184,9 @@
             $('#input-qty').focus();
             $('.search').css('left','-9999px');
 
-
         });
 
 
-        $('#list-table').DataTable();
 
         $('.btn').on( 'click', function () {
             addtolist()
@@ -203,7 +199,7 @@
     function loadProduct(){
         var BASEURL = $('#baseURL').val();
 
-        $('#search-table').DataTable({
+        $('#search-table').dataTable({
             ajax: BASEURL + '/loadProduct',
             columns:[
                 {data: 'id'},
@@ -237,21 +233,20 @@
             },
             success: function(data){
 
-                dTable1.row.add({
-                    "brand": $('#brand').val(),
-                    "category": $('#category').val(),
-                    "code": $('#code').val(),
-                    "description":  $('#description').val(),
-                    "unit": $('#unit').val(),
-                    "qty": $('#input-qty').val(),
-                    "unit_price":   $('#unit_price').val(),
-                    "action": '<i class="glyphicon glyphicon-remove"></i>'
-                }).draw();
-
-                $('#list-table').dataTable().fnPageChange('last');
-
+//                dTable1.row.add({
+//                    "brand": $('#brand').val(),
+//                    "category": $('#category').val(),
+//                    "code": $('#code').val(),
+//                    "description":  $('#description').val(),
+//                    "unit": $('#unit').val(),
+//                    "qty": $('#input-qty').val(),
+//                    "unit_price":   $('#unit_price').val(),
+//                    "action": '<i class="glyphicon glyphicon-remove"></i>'
+//                }).draw();
+                dTable1.ajax.reload(null,false); // reload table paging retained
                 search_table.ajax.reload();
 
+                $('#list-table').dataTable().fnPageChange('last');
                 $('.add-list')[0].reset();
                 $('#search-product').focus();
 
@@ -264,7 +259,7 @@
     function loadDataList(){
         var BASEURL = $('#baseURL').val();
 
-        var dTable1=$('#list-table').DataTable({
+        var dTable1 = $('#list-table').dataTable({
             ajax: BASEURL + '/getTemp',
             columns:[
                 {data: 'brand'},
@@ -277,20 +272,19 @@
                 {data: 'action'}
             ],
             bDestroy: true,
-            "order": []
+            "order": [],
+            "fnInitComplete": function () {
+                dTable1.fnPageChange('last');
+            }
+
         });
 
-        dTable1.page('last').draw(false);
-
-
-
-
+        $('#list-table_wrapper .dataTables_length').hide()
 
     }
 
     jQuery.fn.dataTable.Api.register( 'page.jumpToData()', function ( data, column ) {
         var pos = this.column(column, {order:'current'}).data().indexOf( data );
-
         if ( pos >= 0 ) {
             var page = Math.floor( pos / this.page.info().length );
             this.page( page ).draw( false );
@@ -298,7 +292,6 @@
 
         return this;
     } );
-
 
 
 

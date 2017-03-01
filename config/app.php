@@ -177,8 +177,10 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Teepluss\Theme\ThemeServiceProvider::class
 
+        //added provider
+        Teepluss\Theme\ThemeServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class
 
     ],
 
@@ -227,7 +229,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Theme' => Teepluss\Theme\Facades\Theme::class
+        'Theme' => Teepluss\Theme\Facades\Theme::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class
 
     ],
 

@@ -32,6 +32,9 @@ Route::post('/addToList', 'ProductController@addToList');
 Route::get('/getTemp', 'ProductController@getTemp');
 
 
+Route::get('/loadPdf', 'PdfController@loadPdf');
+
+
 
 //View
 Route::get('/gmaps', 'MapController@gmaps');

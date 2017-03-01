@@ -46,20 +46,25 @@ class ProductController extends Controller
         $product_id = $request->product_id;
         $qty = $request->qty;
 
+        $product = Temp::where('product_id',$product_id)->first();
+        if(count($product) > 0){
+            $productOldQty = $product->product_qty;
+            $productNewQty = $product->product_qty + $qty;
+            DB::table('temp')->where('product_id',$product_id)->update(['product_qty'=>$productNewQty]);
+        }else{
+            Temp::insert(['product_id'=>$product_id,'product_qty'=>$qty]);
+        }
+
         $getOldQty = Products::where('id',$product_id)->first()->qty;
         $newQty = ($getOldQty - $qty);
-
         DB::table('products')->where('id',$product_id)->update(['qty'=>$newQty]);
-        Temp::insert(['product_id'=>$product_id,'product_qty'=>$qty]);
 
 
     }
 
     public function getTemp(){
         $productList = DB::table('temp')->select('temp.temp_id','temp.product_qty','products.*')->join('products','products.id','temp.product_id')->get();
-
         $data  = array();
-
         foreach ($productList as $key => $val){
             $btn_delete = '<i class="glyphicon glyphicon-remove" data-id="'.$val->temp_id.'"></i>';
             array_push($data,['id'=>$val->temp_id,'brand'=>$val->brand,'category'=>$val->category,'code'=>$val->code,'description'=>$val->description,'unit'=>$val->unit,'qty'=>$val->product_qty,'unit_price'=>$val->unit_price,'action'=>$btn_delete]);
