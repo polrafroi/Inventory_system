@@ -171,9 +171,9 @@ input#message {
     height: 34px;
  }
 
-    button#click-btn {
+button#click-btn {
         width: 116px;
-    }
+}
 </style>
 <input type="hidden" value="{{ $name }}" id = "user_name"">
 <input type="hidden" value="{{ $user_id }}" id = "user_id" ">
