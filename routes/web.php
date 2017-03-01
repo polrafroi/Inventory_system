@@ -40,4 +40,8 @@ Route::get('/gmaps', 'MapController@gmaps');
 Route::get('/realtimeDb', 'MapController@real');
 
 
-Route::get('/graphs', 'GraphController@graphs');
+//ADMIN SECTION
+Route::group(['middleware' => 'isAdmin'], function(){
+    Route::get('/graphs', 'GraphController@graphs');
+});
+
