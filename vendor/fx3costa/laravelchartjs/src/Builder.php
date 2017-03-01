@@ -160,4 +160,14 @@ class Builder
         array_set($this->charts[$this->name], $key, $value);
         return $this;
     }
+
+    /**
+     * @param array $size
+     *
+     * @return Builder
+     */
+    public function size($size)
+    {
+        return $this->set('size', $size);
+    }
 }

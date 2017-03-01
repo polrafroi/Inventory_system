@@ -19,7 +19,7 @@ class IsAdmin
     {
 
         if(Auth::check()){
-            if (Auth::user()->role !== 'admin') {
+            if (Auth::user()->roles !== 'admin') {
                 abort(503);
             }
         }else{
