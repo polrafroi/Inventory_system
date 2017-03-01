@@ -71,6 +71,10 @@ return array(
             $theme->asset()->add('bootstrap.min.js', 'assets/js/bootstrap.min.js');
             $theme->asset()->add('bootstrap.min.css', 'assets/css/bootstrap.min.css');
 
+            $theme->asset()->add('scrolling-nav-js', 'assets/js/scrolling-nav.js');
+            $theme->asset()->add('scrolling-nav-css', 'assets/css/scrolling-nav.css');
+
+            $theme->asset()->add('jquery-easing', 'assets/js/jquery.easing.min.js');
             //datatables
             //css
             $theme->asset()->add('dataTables.bootstrap.min.css', 'assets/css/plugins/datatables/dataTables.bootstrap.min.css');
