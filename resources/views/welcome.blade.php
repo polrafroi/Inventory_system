@@ -30,8 +30,8 @@
     /*CUSTOMIZE BOOTSTRAP*/
 
     .navbar-default {
-        background: #2E375F;
-        border-color: #e7e7e7;
+        background: transparent;
+        border-color: transparent;
     }
 
     .navbar-default .navbar-nav>li>a {
@@ -46,7 +46,7 @@
         background: #F22613;
     }
 
-    .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+    .navbar-default .navbar-nav>li>a:focus, .navbar-default .na`vbar-nav>li>a:hover {
         color: white;
         background-color: transparent;
     }
@@ -174,9 +174,8 @@
         <div class="row">
             <div class="col-lg-12">
                 <h3 class="h3-about">WELCOME TO <span class="span-about">LOREM IPSUM</span></h3>
-                
-            </div>
 
+            </div>
         </div>
     </div>
 </section>

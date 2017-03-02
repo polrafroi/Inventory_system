@@ -24,6 +24,7 @@ html {
 
     .top-nav-collapse {
         padding: 0;
+        background: #2E375F !important;
     }
 }
 
@@ -33,7 +34,6 @@ of those sections to manage the look and feel of the site. */
 
 .intro-section {
     height: 100%;
-    padding-top: 6%;
     text-align: center;
     background: #fff;
 }
