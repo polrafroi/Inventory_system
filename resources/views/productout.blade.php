@@ -60,6 +60,10 @@
        margin-bottom: 10px;
     }
 
+    .glyphicon-remove{
+        cursor: pointer;
+    }
+
 
 </style>
 <div class="row">
@@ -70,31 +74,31 @@
 
                 <input type="hidden" class="form-control" id="id">
                 <label>Brand</label>
-                <input type="text" class="form-control" id="brand">
+                <input type="text" class="form-control" id="brand" disabled>
 
                 <label>Category</label>
-                <input type="text" class="form-control" id="category">
+                <input type="text" class="form-control" id="category" disabled>
 
                 <label>Code</label>
-                <input type="text" class="form-control" id="code">
+                <input type="text" class="form-control" id="code" disabled>
 
                 <label>Description</label>
-                <input type="text" class="form-control" id="description">
+                <input type="text" class="form-control" id="description" disabled>
 
                 <label>Unit</label>
-                <select class="form-control" id="unit">
+                <select class="form-control" id="unit" disabled>
                     <option>Gal.</option>
                     <option>Ltr.</option>
                 </select>
 
                 <label>Total Quantity</label>
-                <input type="text" class="form-control" id="qty">
+                <input type="text" class="form-control" id="qty" disabled>
 
                 <label>Unit Price</label>
-                <input type="text" class="form-control" id="unit_price">
+                <input type="text" class="form-control" id="unit_price" disabled>
 
-                <label class="input-qty">Input quantity</label>
-                <input type="text" class="form-control" id="input-qty">
+                <label class="input-qty" >Input quantity</label>
+                <input type="text" class="form-control" id="input-qty" maxlength="10">
 
                 <button type="button" class="btn btn-primary" style="width:100%;margin-top: 10px;">Add</button>
             </div>
@@ -182,17 +186,38 @@
             $('#qty').val($(this).children('td:nth-child(7)').text())
             $('#unit_price').val($(this).children('td:nth-child(8)').text())
             $('#input-qty').focus();
+            $('#search-product').val('');
             $('.search').css('left','-9999px');
 
         });
 
 
-
         $('.btn').on( 'click', function () {
-            addtolist()
+            if($('#qty').val() < $('#input-qty').val() || $('#input-qty').val() <= 0 ){
+                swal({
+                    title:'Error',
+                    text: 'Invalid quantity',
+                    type:'error'
+                    },function(isOk){
+                        if(isOk){
+                            $('#input-qty').val('');
+                            $('#input-qty').focus();
+                        }
+                    });
 
+            }else{
+                addtolist();
+            }
         });
 
+        $('body').delegate('.glyphicon-remove','click',function(){
+            removetoList($(this).data('id'),$(this).data('prod_id'))
+        })
+
+        //text handling
+        $('#input-qty').keypress(function (e) {
+            if (String.fromCharCode(e.keyCode).match(/[^0-9]/g)) return false;
+        });
 
     })
 
@@ -209,7 +234,7 @@
                 {data: 'description'},
                 {data: 'unit'},
                 {data: 'qty'},
-                {data: 'unit_price'}
+                {data: 'unit_price' , bSortable: false}
             ],
             bDestroy: true,
             "order": []
@@ -255,6 +280,35 @@
         });
     }
 
+    function removetoList(id,prod_id){
+        var BASEURL = $('#baseURL').val();
+        $.ajax({
+            url:BASEURL+'/removeToList',
+            type:'POST',
+            data:{
+                '_token': $('meta[name="csrf_token"]').attr('content'),
+                'temp_id':id,
+                'product_id': prod_id
+            },
+            success: function(data){
+
+                swal({  title: "Are you sure?",
+                    text: "You want to Remove this referral.",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: 'Remove',
+                    closeOnConfirm: false
+                }, function(){
+                    var search_table = $('#search-table').DataTable();
+                    var dTable1 = $('#list-table').DataTable();
+                    dTable1.ajax.reload(null,false); // reload table paging retained
+                    search_table.ajax.reload();
+                });
+            }
+        });
+    }
+
 
     function loadDataList(){
         var BASEURL = $('#baseURL').val();
@@ -292,6 +346,8 @@
 
         return this;
     } );
+
+
 
 
 

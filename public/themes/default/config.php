@@ -75,6 +75,7 @@ return array(
             $theme->asset()->add('scrolling-nav-css', 'assets/css/scrolling-nav.css');
 
             $theme->asset()->add('jquery-easing', 'assets/js/jquery.easing.min.js');
+
             //datatables
             //css
             $theme->asset()->add('dataTables.bootstrap.min.css', 'assets/css/plugins/datatables/dataTables.bootstrap.min.css');
@@ -85,6 +86,11 @@ return array(
             $theme->asset()->add('dataTables.bootstrap.min.js', 'assets/js/plugins/datatables/dataTables.bootstrap.min.js');
             $theme->asset()->add('dataTables.responsive.min.js', 'assets/js/plugins/datatables/dataTables.responsive.min.js');
             $theme->asset()->add('responsive.bootstrap.min.js', 'assets/js/plugins/datatables/responsive.bootstrap.min.js');
+
+            //sweetalert
+
+            $theme->asset()->add('sweetalert.min.js', 'assets/js/plugins/bootstrap-sweetalert/sweetalert.min.js');
+            $theme->asset()->add('sweetalert.css', 'assets/css/plugins/bootstrap-sweetalert/sweetalert.css');
 
 
         },

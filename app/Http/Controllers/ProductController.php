@@ -37,6 +37,8 @@ class ProductController extends Controller
     }
 
 
+
+
     public function productOut(){
         $theme = Theme::uses('default')->layout('default')->setTitle('M');
         return $theme->of('productout')->render();
@@ -62,11 +64,21 @@ class ProductController extends Controller
 
     }
 
+    public function removeToList(Request $request){
+        $prod_id = $request->product_id;
+        $temp_id = $request->temp_id;
+        $getTempQty = Temp::where('temp_id',$temp_id)->first()->product_qty;
+        $getProdOldQty = Products::where('id',$prod_id)->first()->qty;
+        $newQty = $getProdOldQty + $getTempQty;
+        DB::table('products')->where('id',$prod_id)->update(['qty'=>$newQty]);
+        Temp::where('temp_id',$temp_id)->delete();
+    }
+
     public function getTemp(){
         $productList = DB::table('temp')->select('temp.temp_id','temp.product_qty','products.*')->join('products','products.id','temp.product_id')->get();
         $data  = array();
         foreach ($productList as $key => $val){
-            $btn_delete = '<i class="glyphicon glyphicon-remove" data-id="'.$val->temp_id.'"></i>';
+            $btn_delete = '<i class="glyphicon glyphicon-remove" data-id="'.$val->temp_id.'" data-prod_id="'.$val->id.'"></i>';
             array_push($data,['id'=>$val->temp_id,'brand'=>$val->brand,'category'=>$val->category,'code'=>$val->code,'description'=>$val->description,'unit'=>$val->unit,'qty'=>$val->product_qty,'unit_price'=>$val->unit_price,'action'=>$btn_delete]);
         }
         return json_encode(['data'=>$data]);

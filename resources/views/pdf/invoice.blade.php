@@ -2,17 +2,7 @@
 <style>
 
     @page {
-        margin: 150px 50px;
-    }
-    #header {
-        position: fixed;
-        left: 0px;
-        top: -130px;
-        right: 0px;
-        height: 100px;
-        background-color: orange;
-        text-align: center;
-        margin-bottom: 10;
+        margin: 180px 50px;
     }
 
 
@@ -40,42 +30,100 @@
     table tbody tr td{
         padding: 5px 0px;
     }
-    .text-center{
-        text-align: center;
-    }
+
     .page-break {
         page-break-after: always;
+    }
+
+
+    .header{
+        text-align: center;
+        position: fixed;
+        top: -150px;
+        margin: 0;
+        background-color: white;
+    }
+    .header h1{
+        text-transform: uppercase;
+        font-size: 24px;
+    }
+    .header .sub-header h3{
+        font-weight: normal;
+        text-transform: capitalize;
+        font-size: 14px;
+    }
+
+
+
+
+    .branch-name{
+        position: fixed;
+        left: 0;
+        top: -50px;
+        font-size: 20px;
+        text-transform: uppercase;
+        padding: 8px 5px 0px 5px;
+        background-color: white;
+        font-weight: 700;
+    }
+
+    .inv-number{
+        position: fixed;
+        right: 0;
+        top: -60px;
+        border: 1px solid red;
+        height: 30px;
+        font-size: 20px;
+        width: 120px;
+        text-align: center;
+        padding: 8px 5px 0px 5px;
+        font-weight: bold;
+        background-color: white;
     }
 
     .page-copy{
         position: fixed;
         text-align: left;
-        bottom: -100px;
+        bottom: -140px;
         background-color: white;
         font-size: 12px;
         font-style: italic;
     }
 
-
+    .date{
+        position: fixed;
+        text-align: right;
+        top: -18px;
+        background-color: white;
+    }
 </style>
 
 <?php $ctr= 0; ?>
 @foreach ($products as $key => $product)
     <?php $ctr++; ?>
     @for($i = 1;$i <= 3;$i++)
-        <div id="header">
-            <div class="header text-center">
-                <h1>Title</h1>
-                <div class="sub-header">
-                    <h3>Title</h3>
-                </div>
-            </div>
-            <div class="header-info">
-                <div class="inv-number">
 
-                </div>
+        <div class="header">
+            <h1>mcoat paint commercial & general merchandise</h1>
+            <div class="sub-header">
+                <h3>mcoat paint commercial and general merchandise</h3>
+                <h3>Tin 0139012389123</h3>
+                <h3>Cel: 1023-1923-1230</h3>
             </div>
         </div>
+
+        <div class="branch-name">
+            Branches of the Philippines
+        </div>
+        <div class="inv-number">
+            MC-000001
+        </div>
+        <div class="date">
+            Date: 10/27/13
+        </div>
+
+            
+
         <table class="table" id="sample" width="100%">
             <thead>
             <tr>

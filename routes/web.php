@@ -28,6 +28,7 @@ Route::post('/addProduct', 'ProductController@addProduct');
 Route::get('/productout', 'ProductController@productOut');
 
 Route::post('/addToList', 'ProductController@addToList');
+Route::post('/removeToList', 'ProductController@removeToList');
 
 Route::get('/getTemp', 'ProductController@getTemp');
 
