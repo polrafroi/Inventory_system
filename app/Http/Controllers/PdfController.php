@@ -16,7 +16,6 @@ class PdfController extends Controller
                              ->select('temp.product_qty','products.*')
                              ->get()->chunk(25);
 
-
         $product_arr = [];
 
         foreach($products as $key=> $val){
@@ -26,10 +25,6 @@ class PdfController extends Controller
 
         $pdf = PDF::loadView('pdf.invoice',['products'=>$product_arr])->setPaper('a4')->setWarnings(false);
         return $pdf->stream();
-
-
-
-
 
 //        return $pdf->download('invoice.pdf');
     }
