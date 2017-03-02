@@ -75,6 +75,7 @@ return array(
             $theme->asset()->add('scrolling-nav-css', 'assets/css/scrolling-nav.css');
 
             $theme->asset()->add('jquery-easing', 'assets/js/jquery.easing.min.js');
+
             //datatables
             //css
             $theme->asset()->add('dataTables.bootstrap.min.css', 'assets/css/plugins/datatables/dataTables.bootstrap.min.css');
