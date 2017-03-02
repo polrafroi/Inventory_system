@@ -26,6 +26,8 @@ class ProductController extends Controller
     }
 
     public function addProduct(Request $request){
+
+
         $brand = $request->brand;
         $category = $request->category;
         $code = $request->code;
@@ -36,15 +38,16 @@ class ProductController extends Controller
         Products::insert(['brand'=>$brand,'category'=>$category,'code'=>$code,'description'=>$description,'unit'=>$unit,'qty'=>$qty,'unit_price'=>$unit_price]);
     }
 
-
-
-
     public function productOut(){
+        $total = DB::table('temp')->join('products','products.id','temp.product_id')->select(DB::raw('sum(temp.product_qty * products.unit_price) as Total'))->first();
         $theme = Theme::uses('default')->layout('default')->setTitle('M');
-        return $theme->of('productout')->render();
+        return $theme->of('productout',['Total'=>$total->Total])->render();
+
     }
 
     public function addToList(Request $request){
+
+
         $product_id = $request->product_id;
         $qty = $request->qty;
 
@@ -61,6 +64,9 @@ class ProductController extends Controller
         $newQty = ($getOldQty - $qty);
         DB::table('products')->where('id',$product_id)->update(['qty'=>$newQty]);
 
+        $total = DB::table('temp')->join('products','products.id','temp.product_id')->select(DB::raw('sum(temp.product_qty * products.unit_price) as Total'))->first();
+
+        return $total->Total;
 
     }
 

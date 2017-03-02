@@ -64,6 +64,29 @@
         cursor: pointer;
     }
 
+    .location{
+        padding-top: 30px;
+    }
+
+    .total-container{
+        padding: 10px 0px 0px 0px;
+        border: 1px solid red;
+        font-size: 24px;
+        font-weight: 700;
+    }
+    .action-container{
+        padding-top: 20px;
+    }
+
+    .action-container .col-md-12{
+        padding: 0;
+        margin: 0;
+
+    }
+    .action-container .col-md-12 button{
+        width: 90%;
+        margin-top: 5px;
+    }
 
 </style>
 <div class="row">
@@ -100,7 +123,7 @@
                 <label class="input-qty" >Input quantity</label>
                 <input type="text" class="form-control" id="input-qty" maxlength="10">
 
-                <button type="button" class="btn btn-primary" style="width:100%;margin-top: 10px;">Add</button>
+                <button type="button" class="btn btn-primary" id="add-list" style="width:100%;margin-top: 10px;">Add</button>
             </div>
         </form>
     </div>
@@ -120,10 +143,28 @@
             </table>
         </div>
         <div class="row">
-            <div class="col-md-12 text-right">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="col-md-4 col-xs-12">
+                <div class="location">
+                    <select class="form-control" id="location">
+                        <option selected>Choose Location</option>
+                        <option>Gal.</option>
+                        <option>Ltr.</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4 col-md-offset-2 text-center col-xs-6">
+                <div class="action-container">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary" id="print">Print</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-2 text-center col-xs-6">
+                <span style="font-weight: bold">TOTAL</span>
+                <div class="total-container">
+                    <p>{{ $Total }}</p>
+                </div>
             </div>
 
         </div>
@@ -152,9 +193,12 @@
 <script>
     $(document).ready(function(){
 
-        loadProduct();
-        loadDataList();
-
+        try{
+            loadProduct();
+            loadDataList();
+        }catch (err){
+            alert('dd')
+        }
 
 
 
@@ -177,6 +221,7 @@
 
 
         $('body').delegate('#search-table tbody tr','dblclick',function(){
+
             $('#id').val($(this).children('td:nth-child(1)').text())
             $('#brand').val($(this).children('td:nth-child(2)').text())
             $('#category').val($(this).children('td:nth-child(3)').text())
@@ -192,12 +237,13 @@
         });
 
 
-        $('.btn').on( 'click', function () {
-            if($('#qty').val() < $('#input-qty').val() || $('#input-qty').val() <= 0 ){
-                swal({
-                    title:'Error',
-                    text: 'Invalid quantity',
-                    type:'error'
+        $('#add-list').on( 'click', function () {
+            if(!($('#input-qty').val().length > 0)){
+                if( $('#input-qty').val() > $('#qty').val()){
+                    swal({
+                        title:'Error',
+                        text: 'Invalid quantity',
+                        type:'error'
                     },function(isOk){
                         if(isOk){
                             $('#input-qty').val('');
@@ -205,13 +251,21 @@
                         }
                     });
 
-            }else{
-                addtolist();
+                }else{
+                    addtolist();
+                }
             }
+            return false;
+
         });
 
         $('body').delegate('.glyphicon-remove','click',function(){
             removetoList($(this).data('id'),$(this).data('prod_id'))
+        })
+
+        $('#print').on('click',function(){
+            var BASEURL = $('#baseURL').val();
+            window.open(BASEURL +'/loadPdf');
         })
 
         //text handling
@@ -275,6 +329,8 @@
                 $('.add-list')[0].reset();
                 $('#search-product').focus();
 
+                $('.total-container p').text(data)
+
 
             }
         });
@@ -291,7 +347,6 @@
                 'product_id': prod_id
             },
             success: function(data){
-
                 swal({  title: "Are you sure?",
                     text: "You want to Remove this referral.",
                     type: "warning",
@@ -300,10 +355,18 @@
                     confirmButtonText: 'Remove',
                     closeOnConfirm: false
                 }, function(){
-                    var search_table = $('#search-table').DataTable();
-                    var dTable1 = $('#list-table').DataTable();
-                    dTable1.ajax.reload(null,false); // reload table paging retained
-                    search_table.ajax.reload();
+                    swal({
+                        title: "",
+                        text: "Product remove successfully",
+                        type:"success"
+                    },function(isConfirm){
+                        if(isConfirm){
+                            var search_table = $('#search-table').DataTable();
+                            var dTable1 = $('#list-table').DataTable();
+                            dTable1.ajax.reload(null,false); // reload table paging retained
+                            search_table.ajax.reload();
+                        }
+                    });
                 });
             }
         });
@@ -337,6 +400,17 @@
 
     }
 
+    //New error event handling has been added in Datatables v1.10.5
+    $.fn.dataTable.ext.errMode = function ( settings, helpPage, message ) {
+        console.log(message);
+        var search_table = $('#search-table').DataTable();
+        var dTable1 = $('#list-table').DataTable();
+        dTable1.ajax.reload(null,false); // reload table paging retained
+        search_table.ajax.reload();
+    };
+
+
+
     jQuery.fn.dataTable.Api.register( 'page.jumpToData()', function ( data, column ) {
         var pos = this.column(column, {order:'current'}).data().indexOf( data );
         if ( pos >= 0 ) {
@@ -346,9 +420,6 @@
 
         return this;
     } );
-
-
-
 
 
 </script>
