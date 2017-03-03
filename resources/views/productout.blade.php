@@ -238,7 +238,7 @@
 
 
         $('#add-list').on( 'click', function () {
-            if(!($('#input-qty').val().length > 0)){
+
                 if( $('#input-qty').val() > $('#qty').val()){
                     swal({
                         title:'Error',
@@ -254,8 +254,7 @@
                 }else{
                     addtolist();
                 }
-            }
-            return false;
+
 
         });
 
