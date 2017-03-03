@@ -37,4 +37,12 @@ class HomeController extends Controller
         return $theme->of('realtime', $data)->render();
     }
 
+
+    public function chat(){
+
+        $theme = Theme::uses('default')->layout('default')->setTitle('M');
+
+        return $theme->of('chat')->render();
+    }
+
 }
