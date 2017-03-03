@@ -71,23 +71,23 @@
 
     <div class="message-container">
         <ul>
-            <li>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="receive-message">
-                            <div class="col-md-2 text-left">
-                                <img src="">
-                            </div>
-                            <div class="col-md-10">
-                                <p> * initApp handles setting up UI event listeners and registering Firebase auth listeners:
-                                    *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or
-                                    *    out, and that is where we update the UI.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </li>
+<!--            <li>-->
+<!--                <div class="container-fluid">-->
+<!--                    <div class="row">-->
+<!--                        <div class="receive-message">-->
+<!--                            <div class="col-md-2 text-left">-->
+<!--                                <img src="">-->
+<!--                            </div>-->
+<!--                            <div class="col-md-10">-->
+<!--                                <p> * initApp handles setting up UI event listeners and registering Firebase auth listeners:-->
+<!--                                    *  - firebase.auth().onAuthStateChanged: This listener is called when the user is signed in or-->
+<!--                                    *    out, and that is where we update the UI.-->
+<!--                                </p>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </li>-->
 <!--            <li>-->
 <!--                <div class="row">-->
 <!--                    <div class="sent-message">-->
