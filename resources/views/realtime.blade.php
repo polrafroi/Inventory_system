@@ -146,6 +146,11 @@
 <input type="hidden" value="{{ $date }}" id = "date">
 
 <input type="hidden" value="{{ $room_id }}" id = "room_id">
+<ul>
+    <li><a href="http://papersllc.com/realtimeDb/1">MCOAT</a></li>
+    <li><a href="http://papersllc.com/realtimeDb/2">PASIG</a></li>
+    <li><a href="http://papersllc.com/realtimeDb/3">DAGUPAN</a></li>
+</ul>
 
 
 <div id="live-chat">
