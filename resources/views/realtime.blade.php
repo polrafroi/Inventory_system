@@ -1,211 +1,195 @@
 <style>
 
-    .wrap {
-        position: absolute;
-        overflow: hidden;
-        top: 10%;
-        right: 10%;
-        bottom: 73px;
-        left: 62%;
-        padding: 5px 8px;
-        display: block;
-        border-radius: 4px;
-        transform: translateY(20px);
-        transition: all 0.5s;
-        visibility: hidden;
-    }
-    .wrap .content {
-        opacity: 0;
-    }
-    .wrap:before {
-        position: absolute;
-        width: 1px;
-        height: 1px;
-        background: white;
-        content: "";
-        bottom: 10px;
-        left: 50%;
-        top: 95%;
-        color: #fff;
-        border-radius: 50%;
-        -webkit-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
-        transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-    .wrap.active {
-        display: block;
-        visibility: visible;
-        box-shadow: 2px 3px 16px silver;
-        transition: all 600ms;
-        transform: translateY(0px);
-        transition: all 0.5s;
-    }
-    .wrap.active:before {
-        height: 2000px;
-        width: 2000px;
-        border-radius: 50%;
-        top: 50%;
-        left: 50%;
-        margin-left: -1000px;
-        margin-top: -1000px;
-        display: block;
-        -webkit-transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
-        transition: all 600ms cubic-bezier(0.215, 0.61, 0.355, 1);
-    }
-    .wrap.active .content {
-        position: relative;
-        z-index: 1;
-        opacity: 1;
-        transition: all 600ms cubic-bezier(0.55, 0.055, 0.675, 0.19);
-    }
 
-    a.button {
-        padding: 11px 11px 13px 13px;
-        outline: none;
-        border-radius: 50%;
-        background: #007fed;
-        color: #fff;
-        font-size: 24px;
-        display: block;
+
+    /* ---------- LIVE-CHAT ---------- */
+
+    #live-chat {
+        bottom: 0;
+        font-size: 12px;
+        right: 50px;
         position: fixed;
-        left: 93%;
-        bottom: 20px;
-        top: auto;
-        margin-left: -25px;
-        transition: transform 0.25s;
-    }
-    a.button:hover {
-        text-decoration: none;
-        background: #2198ff;
-    }
-    a.button.active {
-        transform: rotate(135deg);
-        transition: transform 0.5s;
+        width: 300px;
     }
 
-.chat-body {
-    position: relative;
-    /* top: 70px; */
-    overflow-y: auto;
-    overflow-x: hidden;
-    height: 430px;
-}
-.chat-body ul {
-    list-style: none;
-    padding: 15px;
-    margin: 0;
-}
-.chat-body ul li {
-    display: flex;
-    position: relative;
-    margin:5px 0;
-}
-.user-img{
-    width: 40px;
-    height: 40px;
-    background: #fff;
-    border-radius: 50%;
-    border: 1px solid;
-    position: absolute;
-    line-height: 39px;
-    /*top: 25px;*/
-    text-align: center;
-    left:8px;
-    bottom:0;
-}
+    /*CUSTOMIZE MESSAGE*/
+    .col-md-2, .col-md-10{
+        padding:0;
+    }
+    .panel{
+        margin-bottom: 0px;
+    }
+    .chat-window{
+        bottom:0;
+        position:fixed;
+        float:right;
+        margin-left:10px;
+    }
+    .chat-window > div > .panel{
+        border-radius: 5px 5px 0 0;
+    }
+    .icon_minim{
+        padding:2px 10px;
+    }
+    .msg_container_base{
+        background: #e5e5e5;
+        margin: 0;
+        padding: 0 10px 10px;
+        max-height:300px;
+        overflow-x:hidden;
+        height: 300px;
+    }
+    .top-bar {
+        background: #666;
+        color: white;
+        padding: 10px;
+        position: relative;
+        overflow: hidden;
+    }
+    .msg_receive{
+        padding-left:0;
+        margin-left:0;
+    }
+    .msg_sent{
+        padding-bottom:20px !important;
+        margin-right:0;
+    }
+    .messages {
+        background: white;
+        padding: 10px;
+        border-radius: 2px;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        max-width:100%;
+    }
+    .messages > p {
+        font-size: 13px;
+        margin: 0 0 0.2rem 0;
+    }
+    .messages > time {
+        font-size: 11px;
+        color: #ccc;
+    }
+    .msg_container {
+        padding: 10px;
+        overflow: hidden;
+        display: flex;
+    }
+    img {
+        display: block;
+        width: 100%;
+    }
+    .avatar {
+        position: relative;
+    }
+    .base_receive > .avatar:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 0;
+        height: 0;
+        border: 5px solid #FFF;
+        border-left-color: rgba(0, 0, 0, 0);
+        border-bottom-color: rgba(0, 0, 0, 0);
+    }
 
-.col-md-2 {height: 100%; position: relative;}
-.base-receive .user-img {left:0;}
-.base-receive,.base-send {width:100%;}
-.base-receive .col-md-10 {padding-left:0;padding-right: 0;}
-.base-send .col-md-10 {padding-left:0;padding-right:0;margin:0;}
-.message-box,.message-box-send {
-    /*width: 210px;*/
-    float: left;
-}
-.message-box-send {float:right;}
-.message-box p,.message-box-send p {
-    padding: 10px;
-    color:#213444;
-    background: #cecece;
-    border-radius: 10px;
-    font-size:13px;
-}
-.message-box-send p{background: #f1575e;color:#fff}
-.base-receive .col-md-10::before {
-    width: 0;
-    height: 0;
-    content: "";
-    position: absolute;
-    left: -8px;
-    bottom: 9px;
-    border-bottom: 10px solid #cecece;
-    border-left: 15px solid transparent;
-    transform: rotate(-12deg);
-    -ms-transform: rotate(-12deg); /* IE 9 */
-    -webkit-transform: rotate(-12deg); /* Chrome, Safari, Opera */
-}
-.base-send .col-md-10::after {
-    width: 0;
-    height: 0;
-    content: "";
-    position: absolute;
-    right: -8px;
-    bottom: 9px;
-    border-bottom: 10px solid #f1575e;
-    border-right: 15px solid transparent;
-    transform: rotate(12deg);
-    -ms-transform: rotate(12deg); /* IE 9 */
-    -webkit-transform: rotate(12deg); /* Chrome, Safari, Opera */
-}
-.chat-receive {
-    position: absolute;
-}
+    .base_sent {
+        justify-content: flex-end;
+        align-items: flex-end;
+    }
+    .base_sent > .avatar:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 0;
+        border: 5px solid white;
+        border-right-color: transparent;
+        border-top-color: transparent;
+        box-shadow: 1px 1px 2px rgba(black, 0.2); // not quite perfect but close
+    }
 
-.send-btns {
-    position: relative;
-    top: 14px;
-}
+    .msg_sent > time{
+        float: right;
+    }
 
-input#message {
-    width: 244px;
-    height: 34px;
- }
+    .msg_container_base::-webkit-scrollbar-track
+    {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+        background-color: #F5F5F5;
+    }
 
-button#click-btn {
-        width: 116px;
-}
+    .msg_container_base::-webkit-scrollbar
+    {
+        width: 12px;
+        background-color: #F5F5F5;
+    }
+
+    .msg_container_base::-webkit-scrollbar-thumb
+    {
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: #555;
+    }
+
+    .btn-group.dropup{
+        position:fixed;
+        left:0px;
+        bottom:0;
+    }
+
 </style>
-<input type="hidden" value="{{ $name }}" id = "user_name"">
-<input type="hidden" value="{{ $user_id }}" id = "user_id" ">
 
 
+<input type="hidden" value="{{ $name }}" id = "name">
+<input type="hidden" value="{{ $user_id }}" id = "user_id">
+<input type="hidden" value="{{ $date }}" id = "date">
+
+<input type="hidden" value="{{ $room_id }}" id = "room_id">
 
 
-<div class='wrap'>
-    <div class='content'>
-        <div class="chat-container">
-            <div class="chat-body">
-                <ul id="object_li">
+<div id="live-chat">
 
-                </ul>
-            </div>
-            <div class="send-btns">
-                <input type="text" id = "message" value="">
-                <button type="button" class="btn btn-primary" id="click-btn">SEND</button>
+    <div class="row chat-window col-xs-5 col-md-3" id="chat_window_1" style="margin-left:10px;">
+        <div class="col-xs-12 col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading top-bar">
+                    <div class="col-md-8 col-xs-8">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span> Chat Group</h3>
+                    </div>
+                </div>
+                <div class="panel-body msg_container_base">
+
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input id="message" type="text" class="form-control input-sm chat_input" placeholder="Write your message here..." />
+                        <span class="input-group-btn">
+                        <button class="btn btn-primary btn-sm" id="btn-chat">Send</button>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<a class='button glyphicon glyphicon-plus' href='#'></a>
 
-<script src="https://www.gstatic.com/firebasejs/3.6.10/firebase.js"></script>
+</div> <!-- end live-chat -->
+
+<script>
+    (function() {
+
+        $('.panel-heading').on('click', function() {
+
+            $('.panel-body').slideToggle(300, 'swing');
+            $('.panel-footer').slideToggle(300, 'swing');
+
+        });
+
+    }) ();
+</script>
+
 <script>
 
-    $('a').on('click', function(){
-        $('.wrap, a').toggleClass('active');
-
-        return false;
-    });
     // Initialize Firebase
     var config = {
         apiKey: "AIzaSyBiRdjGgIaDeJzSGQJql2smUs6_jshjpRI",
@@ -216,77 +200,110 @@ button#click-btn {
     };
     firebase.initializeApp(config);
 
-    document.getElementById("click-btn").addEventListener("click", displayAdd);
+    document.getElementById("btn-chat").addEventListener("click", displayAdd);
 
     //get id of List
     const refObjectli = document.getElementById('object_li')
 
-
-
     //get value of user id and name
     var user_id = document.getElementById('user_id').value
-    var user_name = document.getElementById('user_name').value
+    var name = document.getElementById('name').value
+    var date = document.getElementById('date').value
+
+    //get id of case
+    var value = document.getElementById('room_id').value;
 
     //Query messages in realtime database
-    const dbRefObject = firebase.database().ref('messages');
+    const dbRefObject = firebase.database().ref('messages').orderByChild('chat_room').equalTo(value);
 
     //on child added in list
     dbRefObject.on('child_added', function (snap) {
 
 
-
-    //create element
-    const li = document.createElement('li');
-    const innerDiv = document.createElement("div");
-    const colmd10 = document.createElement("div");
-    const colmd2 = document.createElement("div");
-    const divmessagebox = document.createElement("div");
-    const messages = document.createElement("p");
-    const userimg = document.createElement("div");
-
-    //appendChild
-    refObjectli.appendChild(li);
-    li.appendChild(innerDiv);
-    innerDiv.appendChild(colmd10)
-    innerDiv.appendChild(colmd2)
-    divmessagebox.appendChild(messages)
-
-    //set attribute
-
-    if (user_id == snap.val().user_id) {
-
-        li.setAttribute('class','chat-send')
-        innerDiv.setAttribute("class", "base-send");
-        colmd10.setAttribute("class", "col-md-10");
-        colmd2.setAttribute("class", "col-md-2");
-        divmessagebox.setAttribute("class", "message-box-send")
-        colmd10.appendChild(divmessagebox)
-        colmd2.appendChild(userimg)
-
-    }else{
-
-        li.setAttribute('class','chat-receive')
-        innerDiv.setAttribute("class", "base-receive");
-        colmd10.setAttribute("class", "col-md-2");
-        colmd2.setAttribute("class", "col-md-10");
-        divmessagebox.setAttribute("class", "message-box")
-        colmd10.appendChild(userimg)
-        colmd2.appendChild(divmessagebox)
-
-    }
+        if(snap.val().user_id == user_id){
+            $('.msg_container_base').append(
+                $('<div class="row msg_container base_sent">'+
+                    '<div class="col-md-10 col-xs-10">'+
+                    '<div class="messages msg_sent">'+
+                    '<p>'+snap.val().message+'</p>'+
+                    '<time>'+snap.val().user +' '+ timeSince(new Date(snap.val().date)) +' ago'+ '</time>'+
+                    '</div>'+
+                    '</div>'+
+                    '<div class="col-md-2 col-xs-2 avatar">'+
+                    '<img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">'+
+                    '</div>'+
+                    '</div>'
+                ))
+        }else{
+            $('.msg_container_base').append(
+                $('<div class="row msg_container base_receive">'+
+                    '<div class="col-md-2 col-xs-2 avatar">'+
+                    '<img src="http://www.bitrebels.com/wp-content/uploads/2011/02/Original-Facebook-Geek-Profile-Avatar-1.jpg" class=" img-responsive ">'+
+                    '</div>'+
+                    '<div class="col-md-10 col-xs-10">'+
+                    '<div class="messages msg_receive">'+
+                    '<p>'+snap.val().message+'</p>'+
+                    '<time>'+snap.val().user +' '+ timeSince(new Date(snap.val().date)) +' ago'+ '</time>'+
+                    '</div>'+
+                    '</div>'+
+                    '</div>'
+                ))
+        }
 
 
-       messages.setAttribute("class", "messages")
-       messages.innerText = snap.val().message;
-       userimg.setAttribute("class", "user-img")
-       userimg.innerText = snap.val().user_img
+
 
     });
+
+    var timeSince = function(date) {
+        if (typeof date !== 'object') {
+            date = new Date(date);
+        }
+
+        var seconds = Math.floor((new Date() - date) / 1000);
+        var intervalType;
+
+        var interval = Math.floor(seconds / 31536000);
+        if (interval >= 1) {
+            intervalType = 'year';
+        } else {
+            interval = Math.floor(seconds / 2592000);
+            if (interval >= 1) {
+                intervalType = 'month';
+            } else {
+                interval = Math.floor(seconds / 86400);
+                if (interval >= 1) {
+                    intervalType = 'day';
+                } else {
+                    interval = Math.floor(seconds / 3600);
+                    if (interval >= 1) {
+                        intervalType = "hour";
+                    } else {
+                        interval = Math.floor(seconds / 60);
+                        if (interval >= 1) {
+                            intervalType = "minute";
+                        } else {
+                            interval = seconds;
+                            intervalType = "second";
+                        }
+                    }
+                }
+            }
+        }
+
+        if (interval > 1 || interval === 0) {
+            intervalType += 's';
+        }
+
+        return interval + ' ' + intervalType;
+    };
 
 
     //Function Comment
     function displayAdd(){
 
+
+        $('.msg_container_base').animate({scrollTop: $('.msg_container_base').prop("scrollHeight")}, 500);
 
         //get value of message
         var message = document.getElementById('message').value
@@ -298,12 +315,12 @@ button#click-btn {
         //add attributes to object messages
         firebase.database().ref('messages/' + newPostKey).set({
             user_id: user_id,
-            user_img: user_name,
+            chat_room: value,
+            user: name,
+            date: date,
             message: message
         });
 
     }
 
 </script>
-
-

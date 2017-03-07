@@ -23,16 +23,24 @@ class MapController extends Controller
 
     public function real(Request $request){
 
-        $firstname  = Auth::user()->first_name;
-        $lastname  = Auth::user()->last_name;
-        $name = $firstname[0];
+        date_default_timezone_set('Asia/Hong_Kong');
+        $date = date('Y/m/d H:i:s');
+
+
+        $room_id = $request->room_id;
+
+        $firstname  = Auth::user()->firstname;
+        $lastname  = Auth::user()->lastname;
+        $name = $firstname .' '. $lastname;
         $data = [
             'case_id' => $request->case_id,
             'user_id' => Auth::user()->id,
-            'name' => $name
+            'name' => $name,
+            'date' =>$date,
+            'room_id' =>$room_id
         ];
 
-        $theme = Theme::uses('default')->layout('default')->setTitle('M');
+        $theme = Theme::uses('default')->layout('welcome')->setTitle('M');
         return $theme->of('realtime',$data)->render();
     }
 }

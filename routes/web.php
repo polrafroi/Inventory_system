@@ -43,7 +43,7 @@ Route::get('/loadPdf', 'PdfController@loadPdf');
 Route::get('/gmaps', 'MapController@gmaps');
 
 
-Route::get('/realtimeDb', 'MapController@real');
+Route::get('/realtimeDb/{room_id}', 'MapController@real');
 
 
 Route::get('/chat', 'HomeController@chat');
