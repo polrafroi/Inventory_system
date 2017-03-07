@@ -27,7 +27,10 @@ Route::post('/addProduct', 'ProductController@addProduct');
 
 Route::get('/productout', 'ProductController@productOut');
 
-Route::post('/addToList', 'ProductController@addToList');
+//Route::post('/addToList', 'ProductController@addToList');
+Route::match(['GET','POST'],'/addToList', 'ProductController@addToList' );
+
+Route::post('/removeToList', 'ProductController@removeToList');
 
 Route::get('/getTemp', 'ProductController@getTemp');
 
@@ -41,6 +44,9 @@ Route::get('/gmaps', 'MapController@gmaps');
 
 
 Route::get('/realtimeDb', 'MapController@real');
+
+
+Route::get('/chat', 'HomeController@chat');
 
 
 //ADMIN SECTION

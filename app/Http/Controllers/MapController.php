@@ -25,7 +25,7 @@ class MapController extends Controller
 
         $firstname  = Auth::user()->first_name;
         $lastname  = Auth::user()->last_name;
-        $name = $firstname[0].$lastname[0];
+        $name = $firstname[0];
         $data = [
             'case_id' => $request->case_id,
             'user_id' => Auth::user()->id,

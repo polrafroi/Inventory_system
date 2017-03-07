@@ -60,6 +60,33 @@
        margin-bottom: 10px;
     }
 
+    .glyphicon-remove{
+        cursor: pointer;
+    }
+
+    .location{
+        padding-top: 30px;
+    }
+
+    .total-container{
+        padding: 10px 0px 0px 0px;
+        border: 1px solid red;
+        font-size: 24px;
+        font-weight: 700;
+    }
+    .action-container{
+        padding-top: 20px;
+    }
+
+    .action-container .col-md-12{
+        padding: 0;
+        margin: 0;
+
+    }
+    .action-container .col-md-12 button{
+        width: 90%;
+        margin-top: 5px;
+    }
 
 </style>
 <div class="row">
@@ -70,33 +97,33 @@
 
                 <input type="hidden" class="form-control" id="id">
                 <label>Brand</label>
-                <input type="text" class="form-control" id="brand">
+                <input type="text" class="form-control" id="brand" disabled>
 
                 <label>Category</label>
-                <input type="text" class="form-control" id="category">
+                <input type="text" class="form-control" id="category" disabled>
 
                 <label>Code</label>
-                <input type="text" class="form-control" id="code">
+                <input type="text" class="form-control" id="code" disabled>
 
                 <label>Description</label>
-                <input type="text" class="form-control" id="description">
+                <input type="text" class="form-control" id="description" disabled>
 
                 <label>Unit</label>
-                <select class="form-control" id="unit">
+                <select class="form-control" id="unit" disabled>
                     <option>Gal.</option>
                     <option>Ltr.</option>
                 </select>
 
                 <label>Total Quantity</label>
-                <input type="text" class="form-control" id="qty">
+                <input type="text" class="form-control" id="qty" disabled>
 
                 <label>Unit Price</label>
-                <input type="text" class="form-control" id="unit_price">
+                <input type="text" class="form-control" id="unit_price" disabled>
 
-                <label class="input-qty">Input quantity</label>
-                <input type="text" class="form-control" id="input-qty">
+                <label class="input-qty" >Input quantity</label>
+                <input type="text" class="form-control" id="input-qty" maxlength="10">
 
-                <button type="button" class="btn btn-primary" style="width:100%;margin-top: 10px;">Add</button>
+                <button type="button" class="btn btn-primary" id="add-list" style="width:100%;margin-top: 10px;">Add</button>
             </div>
         </form>
     </div>
@@ -116,10 +143,28 @@
             </table>
         </div>
         <div class="row">
-            <div class="col-md-12 text-right">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="submit" class="btn btn-primary">Submit</button>
+            <div class="col-md-4 col-xs-12">
+                <div class="location">
+                    <select class="form-control" id="location">
+                        <option selected>Choose Location</option>
+                        <option>Gal.</option>
+                        <option>Ltr.</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4 col-md-offset-2 text-center col-xs-6">
+                <div class="action-container">
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-primary" id="print">Print</button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="col-md-2 text-center col-xs-6">
+                <span style="font-weight: bold">TOTAL</span>
+                <div class="total-container">
+                    <p>{{ $Total }}</p>
+                </div>
             </div>
 
         </div>
@@ -148,9 +193,12 @@
 <script>
     $(document).ready(function(){
 
-        loadProduct();
-        loadDataList();
-
+        try{
+            loadProduct();
+            loadDataList();
+        }catch (err){
+            alert('dd')
+        }
 
 
 
@@ -173,6 +221,7 @@
 
 
         $('body').delegate('#search-table tbody tr','dblclick',function(){
+
             $('#id').val($(this).children('td:nth-child(1)').text())
             $('#brand').val($(this).children('td:nth-child(2)').text())
             $('#category').val($(this).children('td:nth-child(3)').text())
@@ -182,17 +231,46 @@
             $('#qty').val($(this).children('td:nth-child(7)').text())
             $('#unit_price').val($(this).children('td:nth-child(8)').text())
             $('#input-qty').focus();
+            $('#search-product').val('');
             $('.search').css('left','-9999px');
 
         });
 
 
+        $('#add-list').on( 'click', function () {
 
-        $('.btn').on( 'click', function () {
-            addtolist()
+                if( $('#input-qty').val() > $('#qty').val()){
+                    swal({
+                        title:'Error',
+                        text: 'Invalid quantity',
+                        type:'error'
+                    },function(isOk){
+                        if(isOk){
+                            $('#input-qty').val('');
+                            $('#input-qty').focus();
+                        }
+                    });
+
+                }else{
+                    addtolist();
+                }
+
 
         });
 
+        $('body').delegate('.glyphicon-remove','click',function(){
+            removetoList($(this).data('id'),$(this).data('prod_id'))
+        })
+
+        $('#print').on('click',function(){
+            var BASEURL = $('#baseURL').val();
+            window.open(BASEURL +'/loadPdf');
+        })
+
+        //text handling
+        $('#input-qty').keypress(function (e) {
+            if (String.fromCharCode(e.keyCode).match(/[^0-9]/g)) return false;
+        });
 
     })
 
@@ -209,7 +287,7 @@
                 {data: 'description'},
                 {data: 'unit'},
                 {data: 'qty'},
-                {data: 'unit_price'}
+                {data: 'unit_price' , bSortable: false}
             ],
             bDestroy: true,
             "order": []
@@ -250,7 +328,45 @@
                 $('.add-list')[0].reset();
                 $('#search-product').focus();
 
+                $('.total-container p').text(data)
 
+
+            }
+        });
+    }
+
+    function removetoList(id,prod_id){
+        var BASEURL = $('#baseURL').val();
+        $.ajax({
+            url:BASEURL+'/removeToList',
+            type:'POST',
+            data:{
+                '_token': $('meta[name="csrf_token"]').attr('content'),
+                'temp_id':id,
+                'product_id': prod_id
+            },
+            success: function(data){
+                swal({  title: "Are you sure?",
+                    text: "You want to Remove this referral.",
+                    type: "warning",
+                    showCancelButton: true,
+                    confirmButtonColor: "#DD6B55",
+                    confirmButtonText: 'Remove',
+                    closeOnConfirm: false
+                }, function(){
+                    swal({
+                        title: "",
+                        text: "Product remove successfully",
+                        type:"success"
+                    },function(isConfirm){
+                        if(isConfirm){
+                            var search_table = $('#search-table').DataTable();
+                            var dTable1 = $('#list-table').DataTable();
+                            dTable1.ajax.reload(null,false); // reload table paging retained
+                            search_table.ajax.reload();
+                        }
+                    });
+                });
             }
         });
     }
@@ -283,6 +399,17 @@
 
     }
 
+    //New error event handling has been added in Datatables v1.10.5
+    $.fn.dataTable.ext.errMode = function ( settings, helpPage, message ) {
+        console.log(message);
+        var search_table = $('#search-table').DataTable();
+        var dTable1 = $('#list-table').DataTable();
+        dTable1.ajax.reload(null,false); // reload table paging retained
+        search_table.ajax.reload();
+    };
+
+
+
     jQuery.fn.dataTable.Api.register( 'page.jumpToData()', function ( data, column ) {
         var pos = this.column(column, {order:'current'}).data().indexOf( data );
         if ( pos >= 0 ) {
@@ -292,7 +419,6 @@
 
         return this;
     } );
-
 
 
 </script>

@@ -233,6 +233,8 @@ button#click-btn {
     //on child added in list
     dbRefObject.on('child_added', function (snap) {
 
+
+
     //create element
     const li = document.createElement('li');
     const innerDiv = document.createElement("div");
@@ -272,6 +274,7 @@ button#click-btn {
         colmd2.appendChild(divmessagebox)
 
     }
+
 
        messages.setAttribute("class", "messages")
        messages.innerText = snap.val().message;

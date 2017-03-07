@@ -87,6 +87,14 @@ return array(
             $theme->asset()->add('dataTables.responsive.min.js', 'assets/js/plugins/datatables/dataTables.responsive.min.js');
             $theme->asset()->add('responsive.bootstrap.min.js', 'assets/js/plugins/datatables/responsive.bootstrap.min.js');
 
+            //sweetalert
+
+            $theme->asset()->add('sweetalert.min.js', 'assets/js/plugins/bootstrap-sweetalert/sweetalert.min.js');
+            $theme->asset()->add('sweetalert.css', 'assets/css/plugins/bootstrap-sweetalert/sweetalert.css');
+
+            //firebase
+            $theme->asset()->add('firebase.js','https://www.gstatic.com/firebasejs/3.6.10/firebase.js');
+
 
         },
 
