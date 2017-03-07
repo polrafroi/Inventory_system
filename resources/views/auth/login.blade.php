@@ -4,7 +4,8 @@
     /*GLOBAL CSS*/
 
     body {
-        background: #fff !important;
+        background:#101010 !important;
+
     }
 
     .navbar-default {
@@ -57,11 +58,12 @@
                 }
                     .customize-input{
                         text-align: center;
-                        background-color: #fff !important;
+                        background-color: #101010 !important;
                         border: none !important;
-                        border-bottom: 1px solid black !important;
+                        border-bottom: 1px solid white !important;
                         border-radius: 0px !important;
                         box-shadow: 0 0 0 0px !important;
+                        color: white !important;
                     }
 
                     .center {
@@ -69,9 +71,10 @@
                     }
 
                      button.btn.btn-primary.customize-button{
-                         background: #c0392b;
+                         background: #ecf0f1;
                          border: none;
                          width: 327px;
+                         color: black;
                     }
 
 </style>
