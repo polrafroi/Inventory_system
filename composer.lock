@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "33eb9077a5f35ecf3d7f383315374c47",
-    "content-hash": "2330e17fb932edbb92b2d30e718475ee",
+    "hash": "22c3744e7f226f77929d8d08062f032a",
+    "content-hash": "513c9fac34f4948092b4f8582be9b267",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -3802,6 +3802,7 @@
     "aliases": [],
     "minimum-stability": "stable",
     "stability-flags": {
+        "dompdf/dompdf": 20,
         "teepluss/theme": 20
     },
     "prefer-stable": false,
