@@ -54,3 +54,7 @@ Route::group(['middleware' => 'isAdmin'], function(){
     Route::get('/graphs', 'GraphController@graphs');
 });
 
+
+Route::get('/dashboard', 'DashboardController@viewDashboard');
+
+Route::get('/user', 'UserController@viewUser');

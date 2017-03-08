@@ -1,8 +1,10 @@
 <style>
+
     html,body{
         height: 100%;
         width: 100%;
     }
+
     .body-container{
         height: 100%;
         width: 100%;
@@ -12,11 +14,11 @@
         border-radius: 0;
         outline: 0;
     }
+
     .form-group .form-control:focus{
        box-shadow: none;
         outline: 0;
     }
-
 
 </style>
 <div class="row">
