@@ -26,16 +26,16 @@
       <file leaf-file-name="realtime.blade.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/realtime.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="327" column="0" selection-start="9251" selection-end="9251" vertical-scroll-proportion="-33.76923" vertical-offset="4681" max-vertical-offset="5712">
+            <state line="327" column="0" selection-start="9250" selection-end="9250" vertical-scroll-proportion="-33.76923" vertical-offset="4681" max-vertical-offset="5712">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="chat.blade.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="chat.blade.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/chat.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="300" column="0" selection-start="8136" selection-end="8136" vertical-scroll-proportion="1.3424908" vertical-offset="4367" max-vertical-offset="5219">
+            <state line="300" column="0" selection-start="8136" selection-end="8136" vertical-scroll-proportion="-14.096154" vertical-offset="4367" max-vertical-offset="5219">
               <folding />
             </state>
           </provider>
@@ -86,10 +86,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".env" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name=".env" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="12" selection-start="392" selection-end="392" vertical-scroll-proportion="0.0" vertical-offset="35" max-vertical-offset="799">
+            <state line="19" column="2" selection-start="392" selection-end="392" vertical-scroll-proportion="0.47135842" vertical-offset="35" max-vertical-offset="799">
               <folding />
             </state>
           </provider>
@@ -142,11 +142,11 @@
         <option value="$PROJECT_DIR$/Procfile" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
-        <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/resources/views/productout.blade.php" />
         <option value="$PROJECT_DIR$/public/themes/default/config.php" />
         <option value="$PROJECT_DIR$/resources/views/realtime.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/chat.blade.php" />
+        <option value="$PROJECT_DIR$/.env" />
       </list>
     </option>
   </component>
@@ -938,13 +938,6 @@
         <state line="0" column="53" selection-start="53" selection-end="53" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="598" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.env">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="12" selection-start="392" selection-end="392" vertical-scroll-proportion="0.0" vertical-offset="35" max-vertical-offset="799">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/public/assets/js/plugins/moment/min/tests.js">
       <provider selected="true" editor-type-id="text-editor">
         <state line="18" column="51" selection-start="682" selection-end="682" vertical-scroll-proportion="0.5117057" vertical-offset="0" max-vertical-offset="689401" />
@@ -1004,14 +997,21 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/realtime.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="327" column="0" selection-start="9251" selection-end="9251" vertical-scroll-proportion="-33.76923" vertical-offset="4681" max-vertical-offset="5712">
+        <state line="327" column="0" selection-start="9250" selection-end="9250" vertical-scroll-proportion="-33.76923" vertical-offset="4681" max-vertical-offset="5712">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/chat.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="300" column="0" selection-start="8136" selection-end="8136" vertical-scroll-proportion="1.3424908" vertical-offset="4367" max-vertical-offset="5219">
+        <state line="300" column="0" selection-start="8136" selection-end="8136" vertical-scroll-proportion="-14.096154" vertical-offset="4367" max-vertical-offset="5219">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="19" column="2" selection-start="392" selection-end="392" vertical-scroll-proportion="0.47135842" vertical-offset="35" max-vertical-offset="799">
           <folding />
         </state>
       </provider>
