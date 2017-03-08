@@ -53,7 +53,7 @@
       <file leaf-file-name="config.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/public/themes/default/config.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="82" column="0" selection-start="3321" selection-end="3321" vertical-scroll-proportion="0.0" vertical-offset="1285" max-vertical-offset="2074">
+            <state line="82" column="0" selection-start="3321" selection-end="3321" vertical-scroll-proportion="-51.26923" vertical-offset="61" max-vertical-offset="2074">
               <folding />
             </state>
           </provider>
@@ -71,7 +71,7 @@
       <file leaf-file-name="LoginController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="23" selection-start="917" selection-end="917" vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="935">
+            <state line="35" column="23" selection-start="917" selection-end="917" vertical-scroll-proportion="-15.692307" vertical-offset="153" max-vertical-offset="901">
               <folding />
             </state>
           </provider>
@@ -89,7 +89,16 @@
       <file leaf-file-name=".env" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="2" selection-start="392" selection-end="392" vertical-scroll-proportion="0.47135842" vertical-offset="35" max-vertical-offset="799">
+            <state line="11" column="24" selection-start="282" selection-end="282" vertical-scroll-proportion="0.31694916" vertical-offset="0" max-vertical-offset="799">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.blade.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="79" column="19" selection-start="1954" selection-end="1954" vertical-scroll-proportion="17.0" vertical-offset="1785" max-vertical-offset="2737">
               <folding />
             </state>
           </provider>
@@ -888,11 +897,6 @@
         <state line="7" column="25" selection-start="207" selection-end="207" vertical-scroll-proportion="12.961538" vertical-offset="456" max-vertical-offset="1020" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="19" selection-start="2026" selection-end="2026" vertical-scroll-proportion="-51.653847" vertical-offset="0" max-vertical-offset="2193" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/dashboard.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="123" column="50" selection-start="3932" selection-end="3949" vertical-scroll-proportion="-36.73077" vertical-offset="1136" max-vertical-offset="2414" />
@@ -943,13 +947,6 @@
         <state line="18" column="51" selection-start="682" selection-end="682" vertical-scroll-proportion="0.5117057" vertical-offset="0" max-vertical-offset="689401" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/themes/default/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="82" column="0" selection-start="3321" selection-end="3321" vertical-scroll-proportion="0.0" vertical-offset="1285" max-vertical-offset="2074">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="76" column="70" selection-start="2872" selection-end="2872" vertical-scroll-proportion="0.41379312" vertical-offset="979" max-vertical-offset="1581" />
@@ -970,13 +967,6 @@
     <entry file="file://$PROJECT_DIR$/app/Http/Middleware/IsAdmin.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="7" selection-start="340" selection-end="340" vertical-scroll-proportion="0.0" vertical-offset="272" max-vertical-offset="646">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="23" selection-start="917" selection-end="917" vertical-scroll-proportion="0.0" vertical-offset="595" max-vertical-offset="935">
           <folding />
         </state>
       </provider>
@@ -1009,9 +999,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="19" selection-start="1954" selection-end="1954" vertical-scroll-proportion="17.0" vertical-offset="1785" max-vertical-offset="2737">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="35" column="23" selection-start="917" selection-end="917" vertical-scroll-proportion="-15.692307" vertical-offset="153" max-vertical-offset="901">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/themes/default/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="82" column="0" selection-start="3321" selection-end="3321" vertical-scroll-proportion="-51.26923" vertical-offset="61" max-vertical-offset="2074">
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="2" selection-start="392" selection-end="392" vertical-scroll-proportion="0.47135842" vertical-offset="35" max-vertical-offset="799">
+        <state line="11" column="24" selection-start="282" selection-end="282" vertical-scroll-proportion="0.31694916" vertical-offset="0" max-vertical-offset="799">
           <folding />
         </state>
       </provider>
