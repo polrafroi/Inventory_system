@@ -71,6 +71,9 @@ return array(
             $theme->asset()->add('bootstrap.min.js', 'assets/js/bootstrap.min.js');
             $theme->asset()->add('bootstrap.min.css', 'assets/css/bootstrap.min.css');
 
+            $theme->asset()->add('main.css', 'assets/css/main.css');
+            $theme->asset()->add('main.js', 'assets/js/main.js');
+
             $theme->asset()->add('scrolling-nav-js', 'assets/js/scrolling-nav.js');
             $theme->asset()->add('scrolling-nav-css', 'assets/css/scrolling-nav.css');
 

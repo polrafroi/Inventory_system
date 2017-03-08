@@ -80,7 +80,6 @@
                 .container-form {
                     margin: auto;
                     width: 296px;
-                    margin-top: 37px;
                 }
                     .customize-input{
                         border-radius: 0 !important;
