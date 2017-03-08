@@ -239,7 +239,7 @@
 
         $('#add-list').on( 'click', function () {
 
-                if( $('#input-qty').val() > $('#qty').val()){
+                if( $('#input-qty').val() > $('#qty').val() || $('#input-qty').val() <= 0){
                     swal({
                         title:'Error',
                         text: 'Invalid quantity',
@@ -250,6 +250,7 @@
                             $('#input-qty').focus();
                         }
                     });
+
 
                 }else{
                     addtolist();

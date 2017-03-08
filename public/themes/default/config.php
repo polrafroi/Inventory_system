@@ -95,6 +95,9 @@ return array(
             //firebase
             $theme->asset()->add('firebase.js','https://www.gstatic.com/firebasejs/3.6.10/firebase.js');
 
+            //moment
+            $theme->asset()->add('jquery.moment', 'assets/js/plugins/moment/moment.js');
+
 
         },
 
