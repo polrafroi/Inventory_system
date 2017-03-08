@@ -139,13 +139,13 @@
             <tbody>
             @foreach ($product as $key => $val)
             <tr>
-                <td>{{ $val->brand }}</td>
-                <td>{{ $val->category }}</td>
-                <td>{{ $val->code }}</td>
-                <td>{{ $val->description }}</td>
-                <td>{{ $val->unit }}</td>
-                <td>{{ $val->product_qty }}</td>
-                <td>{{ $val->unit_price }}</td>
+                <td>{!! $val->brand !!}</td>
+                <td>{!! $val->brand !!}</td>
+                <td>{!! $val->brand !!}</td>
+                <td>{!! $val->brand !!}}</td>
+                <td>{!! $val->brand !!}</td>
+                <td>{!! $val->brand !!}</td>
+                <td>{!! $val->brand !!}</td>
             </tr>
             @endforeach
             </tbody>
