@@ -142,33 +142,19 @@
         box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     }
 
-    th{
-        background-color: white;
-    }
 
-    .table-striped>tbody>tr:nth-of-type(odd) {
-        background-color: #f9f9f9;
-
-    }
-
-    .table-striped>tbody>tr:nth-of-type(even) {
-        background-color: white;
-    }
-
-    .table-container {
-        position: relative;
-        top: 15px;
-    }
-
-    .dataTables_filter, .dataTables_info { display: none; }
 
     input#myInput {
         float: right;
         height: 34px;
         text-align: center;
+        box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+        border:0;
     }
+
 </style>
-<button type="button" class="btn-add" data-toggle="modal" data-target="#myModal">Add New Store</button>
+<h4>Manage Users</h4>
+<button type="button" class="btn-add" data-toggle="modal" data-target="#myModal">Add New Store User</button>
 <input type="text" id="myInput" placeholder="Search Branch">
 <div class="table-container">
 <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -182,18 +168,6 @@
     <th>Branch</th>
 </tr>
 </thead>
-<tbody>
-<tr>
-    <td>Tiger Nixon</td>
-    <td>System Architect</td>
-    <td>Edinburgh</td>
-    <td>61</td>
-    <td>Edinburgh</td>
-    <td>61</td>
-</tr>
-
-
-</tbody>
 </table>
 </div>
 
@@ -323,7 +297,5 @@
         $('#myInput').on( 'keyup', function () {
             table.search( this.value ).draw();
         } );
-
     }
-
 </script>

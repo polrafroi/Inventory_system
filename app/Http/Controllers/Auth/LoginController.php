@@ -31,9 +31,9 @@ class LoginController extends Controller
     {
 
         if(Auth::user()->roles == 'admin'){
-            return '/home';
+            return '/dashboard';
         }else{
-            return '/user';
+            return '/dashboard';
         }
 
     }

@@ -65,7 +65,7 @@
             <span class="hamb-bottom"></span>
         </button>
         <div class="user-online">
-            <div class="name-online">{!! Auth::user()->store_name.'-'.Auth::user()->firstname.' '.Auth::user()->lastname !!}</div>
+            <div class="name-online">{!! Auth::user()->store_name.' '.'-'.' '.Auth::user()->firstname.' '.Auth::user()->lastname !!}</div>
             <div class="img-online">
                 <img class="slide-image" src="http://placehold.it/1344x523" alt="">
             </div>
