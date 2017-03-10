@@ -99,7 +99,7 @@
 </style>
 
 <?php $ctr= 0; ?>
-@foreach ($products as $key => $product)
+@foreach ($receipt_no as $key => $rec_no)
     <?php $ctr++; ?>
     @for($i = 1;$i <= 3;$i++)
 
@@ -116,7 +116,7 @@
             Branches of the Philippines
         </div>
         <div class="inv-number">
-            MC-000001
+            {{ $rec_no }}
         </div>
         <div class="date">
             Date: 10/27/13
@@ -137,15 +137,20 @@
             </tr>
             </thead>
             <tbody>
+            <?php $product = \Illuminate\Support\Facades\DB::table('product_out')
+                        ->join('products','products.id','product_out.product_id')
+                        ->where('product_out.receipt_id',$rec_no)
+                        ->get();
+             ?>
             @foreach ($product as $key => $val)
             <tr>
                 <td>{!! $val->brand !!}</td>
-                <td>{!! $val->brand !!}</td>
-                <td>{!! $val->brand !!}</td>
-                <td>{!! $val->brand !!}}</td>
-                <td>{!! $val->brand !!}</td>
-                <td>{!! $val->brand !!}</td>
-                <td>{!! $val->brand !!}</td>
+                <td>{!! $val->category !!}</td>
+                <td>{!! $val->code !!}</td>
+                <td>{!! $val->description !!}}</td>
+                <td>{!! $val->unit !!}</td>
+                <td>{!! $val->qty !!}</td>
+                <td>{!! $val->unit_price !!}</td>
             </tr>
             @endforeach
             </tbody>
@@ -161,7 +166,7 @@
             @endif
         </div>
 
-        @if($ctr <= count($products))
+        @if($ctr <= count($receipt_no))
         <div class="page-break"></div>
         @endif
     @endfor

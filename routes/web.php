@@ -58,3 +58,6 @@ Route::group(['middleware' => 'isAdmin'], function(){
 Route::get('/dashboard', 'DashboardController@viewDashboard');
 
 Route::get('/user', 'UserController@viewUser');
+
+
+Route::get('/printReceipt', 'ProductController@printReceipt');

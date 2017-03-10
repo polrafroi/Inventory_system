@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Theme;
 use App\Products;
 use \App\Temp;
+use PDF;
 
 class ProductController extends Controller
 {
@@ -88,5 +89,35 @@ class ProductController extends Controller
             array_push($data,['id'=>$val->temp_id,'brand'=>$val->brand,'category'=>$val->category,'code'=>$val->code,'description'=>$val->description,'unit'=>$val->unit,'qty'=>$val->product_qty,'unit_price'=>$val->unit_price,'action'=>$btn_delete]);
         }
         return json_encode(['data'=>$data]);
+    }
+
+
+    public function printReceipt(){
+
+
+        $getProducts = DB::table('products')->join('temp','temp.product_id','products.id')
+            ->select('temp.temp_id','temp.product_qty','products.*')
+            ->get()->chunk(25);
+        $getAllReceipt = [];
+        foreach($getProducts as $key => $products){
+            $arr_id = [];
+            $lastNumber = DB::table('receipt_ctr')->orderBy('id','desc')->first();
+            $receiptNumber = 'MC-000'.$lastNumber->id;
+            foreach($products as $key=>$val){
+                array_push($arr_id,$val->temp_id);
+
+                DB::table('product_out')->insert(['product_id'=>$val->id,'qty'=>$val->product_qty,'receipt_id'=>$receiptNumber]);
+            }
+            DB::table('receipt_ctr')->insert(['ctr'=>'ctr']);
+            DB::table('temp')->whereIn('temp_id',$arr_id)->delete();
+            array_push($getAllReceipt,$receiptNumber);
+
+
+        }
+
+        $pdf = PDF::loadView('pdf.invoice',['receipt_no'=>$getAllReceipt])->setPaper('a4')->setWarnings(false);
+        return $pdf->stream();
+
+
     }
 }
