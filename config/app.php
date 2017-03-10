@@ -184,7 +184,8 @@ return [
         Barryvdh\DomPDF\ServiceProvider::class,
 
         Teepluss\Theme\ThemeServiceProvider::class,
-        Fx3costa\LaravelChartJs\Providers\ChartjsServiceProvider::class
+        Fx3costa\LaravelChartJs\Providers\ChartjsServiceProvider::class,
+        Yajra\Datatables\DatatablesServiceProvider::class
 
     ],
 

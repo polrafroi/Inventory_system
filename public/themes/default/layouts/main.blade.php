@@ -10,7 +10,6 @@
     <meta name="csrf_token" content="{{ csrf_token() }}">
     {!! Theme::asset()->styles() !!}
     {!! Theme::asset()->scripts() !!}
-    <link href="https://cdn.datatables.net/1.10.13/css/dataTables.material.min.css" rel="stylesheet">
 </head>
 <body>
 <div id="wrapper">
@@ -66,14 +65,14 @@
             <span class="hamb-bottom"></span>
         </button>
         <div class="user-online">
-            <div class="name-online">{!! Auth::user()->firstname.' '.Auth::user()->lastname !!}</div>
+            <div class="name-online">{!! Auth::user()->store_name.' '.'-'.' '.Auth::user()->firstname.' '.Auth::user()->lastname !!}</div>
             <div class="img-online">
                 <img class="slide-image" src="http://placehold.it/1344x523" alt="">
             </div>
         </div>
         <div class="container">
             <div class="row">
-                <div class="col-lg-8 col-lg-offset-1">
+                <div class="col-lg-12">
                     {!! Theme::content() !!}
                 </div>
             </div>
