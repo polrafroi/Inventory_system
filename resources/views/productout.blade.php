@@ -251,7 +251,6 @@
                         }
                     });
 
-
                 }else{
                     addtolist();
                 }
@@ -265,7 +264,7 @@
 
         $('#print').on('click',function(){
             var BASEURL = $('#baseURL').val();
-            window.open(BASEURL +'/loadPdf');
+            window.open(BASEURL +'/printReceipt');
         })
 
         //text handling

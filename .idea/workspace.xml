@@ -44,7 +44,7 @@
       <file leaf-file-name="invoice.blade.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/pdf/invoice.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="144" column="47" selection-start="3128" selection-end="3128" vertical-scroll-proportion="0.0" vertical-offset="1629" max-vertical-offset="3111">
+            <state line="144" column="47" selection-start="3128" selection-end="3128" vertical-scroll-proportion="-90.34615" vertical-offset="99" max-vertical-offset="3111">
               <folding />
             </state>
           </provider>
@@ -68,10 +68,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="web.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="web.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/routes/web.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="60" column="0" selection-start="1482" selection-end="1482" vertical-scroll-proportion="0.608156" vertical-offset="524" max-vertical-offset="1088">
+            <state line="60" column="0" selection-start="1482" selection-end="1482" vertical-scroll-proportion="-13.192307" vertical-offset="524" max-vertical-offset="1088">
               <folding />
             </state>
           </provider>
@@ -86,10 +86,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="productout.blade.php" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="productout.blade.php" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/views/productout.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="252" column="0" selection-start="7381" selection-end="7381" vertical-scroll-proportion="0.0" vertical-offset="4284" max-vertical-offset="7310">
+            <state line="251" column="23" selection-start="7380" selection-end="7380" vertical-scroll-proportion="0.30141845" vertical-offset="4097" max-vertical-offset="7293">
               <folding />
             </state>
           </provider>
@@ -98,7 +98,7 @@
       <file leaf-file-name="ProductController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="18" column="65" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0" vertical-offset="206" max-vertical-offset="2193">
+            <state line="94" column="32" selection-start="3788" selection-end="3800" vertical-scroll-proportion="-6.1538463" vertical-offset="1336" max-vertical-offset="2091">
               <folding />
             </state>
           </provider>
@@ -160,11 +160,11 @@
         <option value="$PROJECT_DIR$/resources/views/realtime.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/chat.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/PdfController.php" />
-        <option value="$PROJECT_DIR$/resources/views/productout.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/pdf/invoice.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/routes/web.php" />
+        <option value="$PROJECT_DIR$/resources/views/productout.blade.php" />
       </list>
     </option>
   </component>
@@ -715,7 +715,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1" y="0" width="1382" height="744" extended-state="0" />
+    <frame x="-1" y="0" width="1382" height="744" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -993,30 +993,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/productout.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="252" column="0" selection-start="7381" selection-end="7381" vertical-scroll-proportion="0.0" vertical-offset="4284" max-vertical-offset="7310">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/pdf/invoice.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="144" column="47" selection-start="3128" selection-end="3128" vertical-scroll-proportion="0.0" vertical-offset="1629" max-vertical-offset="3111">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/PdfController.php">
       <provider selected="true" editor-type-id="text-editor">
         <state line="8" column="0" selection-start="129" selection-end="137" vertical-scroll-proportion="0.0" vertical-offset="136" max-vertical-offset="663">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="18" column="65" selection-start="363" selection-end="363" vertical-scroll-proportion="0.0" vertical-offset="206" max-vertical-offset="2193">
           <folding />
         </state>
       </provider>
@@ -1030,7 +1009,28 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/routes/web.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="60" column="0" selection-start="1482" selection-end="1482" vertical-scroll-proportion="0.608156" vertical-offset="524" max-vertical-offset="1088">
+        <state line="60" column="0" selection-start="1482" selection-end="1482" vertical-scroll-proportion="-13.192307" vertical-offset="524" max-vertical-offset="1088">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/pdf/invoice.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="144" column="47" selection-start="3128" selection-end="3128" vertical-scroll-proportion="-90.34615" vertical-offset="99" max-vertical-offset="3111">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/ProductController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="94" column="32" selection-start="3788" selection-end="3800" vertical-scroll-proportion="-6.1538463" vertical-offset="1336" max-vertical-offset="2091">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/productout.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="251" column="23" selection-start="7380" selection-end="7380" vertical-scroll-proportion="0.30141845" vertical-offset="4097" max-vertical-offset="7293">
           <folding />
         </state>
       </provider>
