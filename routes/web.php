@@ -61,7 +61,13 @@ Route::get('/user', 'UserController@viewUser');
 
 
 
+
+
 Route::get('/printReceipt', 'ProductController@printReceipt');
 
 Route::get('/user-ajax'                               ,   'UserController@userAjax');
+
+
+Route::get('/mobile', 'DashboardController@viewDashboardMobile');
+
 
