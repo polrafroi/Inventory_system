@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Branch;
 use App\Products;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -57,12 +58,19 @@ class DashboardController extends Controller
 
     public function viewManageProducts(){
         $theme = Theme::uses('default')->layout('main')->setTitle('Dashboard');
-        return $theme->of('dashboard.manageproduct')->render();
+        return $theme->of('products.manageproduct')->render();
+    }
+
+    public function viewProductOut(){
+        $total = DB::table('temp')->join('products','products.id','temp.product_id')->select(DB::raw('sum(temp.product_qty * products.unit_price) as Total'))->first();
+        $theme = Theme::uses('default')->layout('main')->setTitle('M');
+        return $theme->of('products.productout',['Total'=>$total->Total,'branch'=>Branch::all()])->render();
+
     }
 
 
-    public function viewDashboardMobile(){
 
+    public function viewDashboardMobile(){
         $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
         return $theme->of('mobiledashboard')->render();
     }

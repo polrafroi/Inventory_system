@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 use Theme;
 use App\Products;
 use \App\Temp;
@@ -61,12 +62,7 @@ class ProductController extends Controller
 
 
 
-    public function productOut(){
-        $total = DB::table('temp')->join('products','products.id','temp.product_id')->select(DB::raw('sum(temp.product_qty * products.unit_price) as Total'))->first();
-        $theme = Theme::uses('default')->layout('default')->setTitle('M');
-        return $theme->of('productout',['Total'=>$total->Total])->render();
 
-    }
 
     public function addToList(Request $request){
 
@@ -114,8 +110,9 @@ class ProductController extends Controller
     }
 
 
-    public function printReceipt(){
+    public function printReceipt(Request $request){
 
+        $location = Input::get('location');
 
         $getProducts = DB::table('products')->join('temp','temp.product_id','products.id')
             ->select('temp.temp_id','temp.product_qty','products.*')
@@ -137,7 +134,7 @@ class ProductController extends Controller
 
         }
 
-        $pdf = PDF::loadView('pdf.invoice',['receipt_no'=>$getAllReceipt])->setPaper('a4')->setWarnings(false);
+        $pdf = PDF::loadView('pdf.invoice',['receipt_no'=>$getAllReceipt,'location'=>$request->location])->setPaper('a4')->setWarnings(false);
         return $pdf->stream();
 
 
