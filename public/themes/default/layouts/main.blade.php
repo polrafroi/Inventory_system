@@ -12,6 +12,7 @@
     {!! Theme::asset()->scripts() !!}
 </head>
 <body>
+<input type="hidden" id="baseURL" value="{{ url('') }}" >
 <div id="wrapper">
     <div class="overlay"></div>
 
@@ -27,22 +28,15 @@
                 <a href="{{ URL::to('dashboard') }}"><i class="fa fa-fw fa-home"></i> Dashboard</a>
             </li>
             <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-user"></i>Users<span class="caret"></span></a>
-                <ul class="dropdown-menu" role="menu">
-                    <li class="dropdown-header">Action</li>
-                    <li><a href="{{ URL::to('user') }}">Manage Users</a></li>
-                    <li><a href="#">Change Password</a></li>
-                </ul>
-            </li>
-            <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-shopping-cart"></i>Products<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                     <li class="dropdown-header">Action</li>
-                    <li><a href="">Manage Products</a></li>
+                    <li><a href="{{ URL::to('manageproducts') }}">Manage Products</a></li>
                     <li><a href="#">Product In</a></li>
-                    <li><a href="#">Product Out</a></li>
+                    <li><a href="/productout">Product Out</a></li>
                 </ul>
             </li>
+
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-line-chart"></i>Reports<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
@@ -52,6 +46,17 @@
                     <li><a href="#">aa</a></li>
                 </ul>
             </li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-user"></i>Users<span class="caret"></span></a>
+                <ul class="dropdown-menu" role="menu">
+                    <li class="dropdown-header">Action</li>
+                    <li><a href="{{ URL::to('user') }}">Manage Users</a></li>
+                    <li><a href="#">Change Password</a></li>
+                </ul>
+            </li>
+
+
 
         </ul>
     </nav>
@@ -71,11 +76,7 @@
             </div>
         </div>
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    {!! Theme::content() !!}
-                </div>
-            </div>
+            {!! Theme::content() !!}
         </div>
     </div>
     <!-- /#page-content-wrapper -->

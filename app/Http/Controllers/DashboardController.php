@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Products;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Theme;
@@ -49,11 +50,20 @@ class DashboardController extends Controller
             return $theme->of('dashboardmain', compact('chartjs'))->render();
         }
 
+    public function viewProducts(){
+        $theme = Theme::uses('default')->layout('main')->setTitle('Dashboard');
+        return $theme->of('dashboard.productlist')->render();
+    }
 
-        public function viewDashboardMobile(){
+    public function viewManageProducts(){
+        $theme = Theme::uses('default')->layout('main')->setTitle('Dashboard');
+        return $theme->of('dashboard.manageproduct')->render();
+    }
 
 
-            $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
-            return $theme->of('mobiledashboard')->render();
-        }
+    public function viewDashboardMobile(){
+
+        $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
+        return $theme->of('mobiledashboard')->render();
+    }
 }
