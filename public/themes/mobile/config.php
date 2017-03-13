@@ -57,12 +57,20 @@ return array(
         // breadcrumb template.
         'beforeRenderTheme' => function($theme)
         {
+
+          $theme->asset()->add('jquery', 'assets/js/jquery.js');
+          $theme->asset()->add('bootstrap.min.js', 'assets/js/bootstrap.min.js');
+          $theme->asset()->add('bootstrap.min.css', 'assets/css/bootstrap.min.css');
+
           $theme->asset()->add('my-app.css', 'assets/css/my-app.css');
           $theme->asset()->add('framework7.ios.min.css', 'assets/css/framework7.ios.min.css');
 
 
           $theme->asset()->add('my-app.js', 'assets/js/my-app.js');
           $theme->asset()->add('framework7.min.js', 'assets/js/framework7.min.js');
+
+
+
         },
 
         // Listen on event before render a layout,

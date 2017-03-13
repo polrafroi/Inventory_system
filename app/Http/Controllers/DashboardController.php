@@ -35,7 +35,6 @@ class DashboardController extends Controller
 
             }
 
-
             $chartjs = app()->chartjs
                 ->name('lineChartTest')
                 ->type('line')
@@ -44,14 +43,18 @@ class DashboardController extends Controller
                 ->datasets($array_branch)
                 ->options([]);
 
+            if($this->isMobile()){
+                $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
+                return $theme->of('mobiledashboard', compact('chartjs'))->render();
+            }else{
+                $theme = Theme::uses('default')->layout('main')->setTitle('dashboard');
+                return $theme->of('dashboardmain', compact('chartjs'))->render();
+            }
 
-            $theme = Theme::uses('default')->layout('main')->setTitle('dashboard');
-            return $theme->of('dashboardmain', compact('chartjs'))->render();
         }
 
 
         public function viewDashboardMobile(){
-
 
             $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
             return $theme->of('mobiledashboard')->render();

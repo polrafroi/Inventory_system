@@ -11,10 +11,13 @@ use Yajra\Datatables\Facades\Datatables;
 class UserController extends Controller
 {
     public function viewUser(){
-
-        $theme = Theme::uses('default')->layout('main')->setTitle('Users');
-
-        return $theme->of('user')->render();
+        if($this->isMobile()){
+            $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
+            return $theme->of('mobileuser')->render();
+        }else{
+            $theme = Theme::uses('default')->layout('main')->setTitle('Users');
+            return $theme->of('user')->render();
+        }
     }
 
     public function userAjax(Request $request){
