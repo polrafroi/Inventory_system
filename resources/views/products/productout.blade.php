@@ -74,6 +74,9 @@
         font-size: 24px;
         font-weight: 700;
     }
+    .total-container p{
+        color: #000000;
+    }
     .action-container{
         padding-top: 20px;
     }
@@ -147,8 +150,9 @@
                 <div class="location">
                     <select class="form-control" id="location">
                         <option selected>Choose Location</option>
-                        <option>Gal.</option>
-                        <option>Ltr.</option>
+                        @foreach ($branch as $key => $val)
+                            <option>{{ $val->branch_name }}</option>
+                        @endforeach
                     </select>
                 </div>
             </div>
@@ -238,22 +242,23 @@
 
 
         $('#add-list').on( 'click', function () {
+                var inputted =  parseInt($('#input-qty').val())
+                var prod_qty = parseInt($('#qty').val())
+            if( inputted > prod_qty || inputted <= 0 ){
+                swal({
+                    title:'Error',
+                    text: 'Invalid quantity',
+                    type:'error'
+                },function(isOk){
+                    if(isOk){
+                        $('#input-qty').val('');
+                        $('#input-qty').focus();
+                    }
+                });
 
-                if( $('#input-qty').val() > $('#qty').val() || $('#input-qty').val() <= 0){
-                    swal({
-                        title:'Error',
-                        text: 'Invalid quantity',
-                        type:'error'
-                    },function(isOk){
-                        if(isOk){
-                            $('#input-qty').val('');
-                            $('#input-qty').focus();
-                        }
-                    });
-
-                }else{
-                    addtolist();
-                }
+            }else{
+                addtolist();
+            }
 
 
         });
@@ -263,10 +268,19 @@
         })
 
         $('#print').on('click',function(){
-            var BASEURL = $('#baseURL').val();
-            window.open(BASEURL +'/printReceipt');
-            var dTable1 = $('#list-table').DataTable();
-            dTable1.ajax.reload();
+
+            if($('#location').val()!='Choose Location'){
+                var BASEURL = $('#baseURL').val();
+                window.open(BASEURL +'/printReceipt?location='+$('#location').val());
+                location.reload();
+                $('.total-container p').text('');
+            }else{
+                swal('','Please choose location','error')
+            }
+
+
+
+
 
         })
 

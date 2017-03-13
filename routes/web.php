@@ -28,7 +28,7 @@ Route::post('/addProduct', 'ProductController@addProduct');
 Route::post('/deleteProduct', 'ProductController@deleteProduct');
 Route::post('/editProduct', 'ProductController@editProduct');
 
-Route::get('/productout', 'ProductController@productOut');
+
 
 //Route::post('/addToList', 'ProductController@addToList');
 Route::match(['GET','POST'],'/addToList', 'ProductController@addToList' );
@@ -75,6 +75,5 @@ Route::get('/mobile', 'DashboardController@viewDashboardMobile');
 
 Route::get('/dashboard', 'DashboardController@viewProducts');
 Route::get('/manageproducts', 'DashboardController@viewManageProducts');
-
-
+Route::get('/productout', 'DashboardController@viewProductOut');
 

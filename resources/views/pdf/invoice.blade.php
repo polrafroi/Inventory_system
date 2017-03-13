@@ -113,7 +113,7 @@
         </div>
 
         <div class="branch-name">
-            Branches of the Philippines
+            {{ $location }}
         </div>
         <div class="inv-number">
             {{ $rec_no }}
