@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Products;
 use Theme;
 use DB;
 class DashboardController extends Controller
@@ -59,4 +60,16 @@ class DashboardController extends Controller
             $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
             return $theme->of('mobiledashboard')->render();
         }
+
+    public function viewProducts(){
+        if($this->isMobile()){
+            $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
+            return $theme->of('mobiledashboard')->render();
+        }else{
+            $theme = Theme::uses('default')->layout('main')->setTitle('Dashboard');
+            return $theme->of('dashboard.productlist')->render();
+        }
+
+    }
+
 }
