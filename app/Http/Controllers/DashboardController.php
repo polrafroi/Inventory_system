@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Branch;
 use App\Products;
 use Illuminate\Http\Request;
@@ -37,7 +38,6 @@ class DashboardController extends Controller
 
             }
 
-
             $chartjs = app()->chartjs
                 ->name('lineChartTest')
                 ->type('line')
@@ -46,15 +46,17 @@ class DashboardController extends Controller
                 ->datasets($array_branch)
                 ->options([]);
 
+            if($this->isMobile()){
+                $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
+                return $theme->of('mobiledashboard', compact('chartjs'))->render();
+            }else{
+                $theme = Theme::uses('default')->layout('main')->setTitle('dashboard');
+                return $theme->of('dashboardmain', compact('chartjs'))->render();
+            }
 
-            $theme = Theme::uses('default')->layout('main')->setTitle('dashboard');
-            return $theme->of('dashboardmain', compact('chartjs'))->render();
         }
 
-    public function viewProducts(){
-        $theme = Theme::uses('default')->layout('main')->setTitle('Dashboard');
-        return $theme->of('dashboard.productlist')->render();
-    }
+
 
     public function viewManageProducts(){
         $theme = Theme::uses('default')->layout('main')->setTitle('Dashboard');
@@ -70,8 +72,23 @@ class DashboardController extends Controller
 
 
 
+
     public function viewDashboardMobile(){
+
         $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
         return $theme->of('mobiledashboard')->render();
     }
+
+
+    public function viewProducts(){
+        if($this->isMobile()){
+            $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
+            return $theme->of('mobiledashboard')->render();
+        }else{
+            $theme = Theme::uses('default')->layout('main')->setTitle('Dashboard');
+            return $theme->of('dashboard.productlist')->render();
+        }
+
+    }
+
 }
