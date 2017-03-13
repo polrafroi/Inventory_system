@@ -265,6 +265,9 @@
         $('#print').on('click',function(){
             var BASEURL = $('#baseURL').val();
             window.open(BASEURL +'/printReceipt');
+            var dTable1 = $('#list-table').DataTable();
+            dTable1.ajax.reload();
+
         })
 
         //text handling

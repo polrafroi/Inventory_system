@@ -16,18 +16,20 @@ class ProductController extends Controller
     public function loadProduct()
     {
         $productList = Products::all();
-        $btn_edit = '<i class="glyphicon glyphicon-pencil"></i>';
-        $btn_delete = '<i class="glyphicon glyphicon-remove"></i>';
+
         $data  = array();
         foreach ($productList as $key => $val){
+            $btn_edit = '<i class="glyphicon glyphicon-pencil edit" data-id="'.$val->id.'"></i>';
+            $btn_delete = '<i class="glyphicon glyphicon-remove delete" data-id="'.$val->id.'"></i>';
             array_push($data,['id'=>$val->id,'brand'=>$val->brand,'category'=>$val->category,'code'=>$val->code,'description'=>$val->description,'unit'=>$val->unit,'qty'=>$val->qty,'unit_price'=>$val->unit_price,'action'=>$btn_edit.'   '.$btn_delete]);
         }
 
         return json_encode(['data'=>$data]);
     }
 
-    public function addProduct(Request $request){
 
+
+    public function addProduct(Request $request){
 
         $brand = $request->brand;
         $category = $request->category;
@@ -38,6 +40,26 @@ class ProductController extends Controller
         $unit_price = $request->unit_price;
         Products::insert(['brand'=>$brand,'category'=>$category,'code'=>$code,'description'=>$description,'unit'=>$unit,'qty'=>$qty,'unit_price'=>$unit_price]);
     }
+
+    public function editProduct(Request $request){
+        $product_id = $request->product_id;
+        $brand = $request->brand;
+        $category = $request->category;
+        $code = $request->code;
+        $description = $request->description;
+        $unit = $request->unit;
+        $qty = $request->qty;
+        $unit_price = $request->unit_price;
+
+        DB::table('products')->where('id',$product_id)->update(['brand'=>$brand,'category'=>$category,'code'=>$code,'description'=>$description,'qty'=>$qty,'unit'=>$unit,'unit_price'=>$unit_price]);
+    }
+
+    public function deleteProduct(Request $request){
+        $product_id = $request->product_id;
+        Products::where('id',$product_id)->delete();
+    }
+
+
 
     public function productOut(){
         $total = DB::table('temp')->join('products','products.id','temp.product_id')->select(DB::raw('sum(temp.product_qty * products.unit_price) as Total'))->first();

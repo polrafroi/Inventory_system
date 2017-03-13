@@ -23,7 +23,10 @@ Route::get('/home', 'HomeController@index');
 
 //products
 Route::get('/loadProduct', 'ProductController@loadProduct');
+
 Route::post('/addProduct', 'ProductController@addProduct');
+Route::post('/deleteProduct', 'ProductController@deleteProduct');
+Route::post('/editProduct', 'ProductController@editProduct');
 
 Route::get('/productout', 'ProductController@productOut');
 
@@ -55,7 +58,7 @@ Route::group(['middleware' => 'isAdmin'], function(){
 });
 
 
-Route::get('/dashboard', 'DashboardController@viewDashboard');
+
 
 Route::get('/user', 'UserController@viewUser');
 
@@ -67,7 +70,11 @@ Route::get('/printReceipt', 'ProductController@printReceipt');
 
 Route::get('/user-ajax'                               ,   'UserController@userAjax');
 
-
 Route::get('/mobile', 'DashboardController@viewDashboardMobile');
+
+
+Route::get('/dashboard', 'DashboardController@viewProducts');
+Route::get('/manageproducts', 'DashboardController@viewManageProducts');
+
 
 
