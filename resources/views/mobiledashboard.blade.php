@@ -30,7 +30,7 @@
                 <div class="item-media"><img src="http://lorempixel.com/160/160/people/1" width="80"/></div>
                 <div class="item-inner">
                     <div class="item-title-row">
-                        <div class="item-title">{{$product->description}}</div>
+                        <div class="item-title">{{$product->description}} Lorem ipsum</div>
                         <div class="item-after">P{{$product->unit_price}}</div>
                     </div>
                     <div class="item-subtitle">{{$product->brand}}</div>
