@@ -64,9 +64,17 @@ class DashboardController extends Controller
     }
 
     public function viewProductOut(){
-        $total = DB::table('temp')->join('products','products.id','temp.product_id')->select(DB::raw('sum(temp.product_qty * products.unit_price) as Total'))->first();
-        $theme = Theme::uses('default')->layout('main')->setTitle('M');
-        return $theme->of('products.productout',['Total'=>$total->Total,'branch'=>Branch::all()])->render();
+
+    $total = DB::table('temp')->join('products','products.id','temp.product_id')->select(DB::raw('sum(temp.product_qty * products.unit_price) as Total'))->first();
+
+            if($this->isMobile()){
+                $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
+                return $theme->of('mobileproductout')->render();
+            }else{
+                $theme = Theme::uses('default')->layout('main')->setTitle('M');
+                return $theme->of('products.productout',['Total'=>$total->Total,'branch'=>Branch::all()])->render();
+            }
+
 
     }
 
