@@ -187,7 +187,6 @@
     });
 
 
-
     //Function Comment
     function displayAdd(chat_room_id){
         //get value of message
@@ -269,12 +268,12 @@
                 $('.friend-list ul').attr('data-chat_room',getKey)
                 $('.friend-list ul li').remove()
 
-                var getMessage = firebase.database().ref('chat-list/'+getKey+'/messages');
-                getMessage.on('child_added',function(message){
-
-                    $('.friend-list ul').append($('<li>'+ message.val().message +'</li>'))
-
-                });
+//                var getMessage = firebase.database().ref('chat-list/'+getKey+'/messages');
+//                getMessage.on('child_added',function(message){
+//
+//                    $('.friend-list ul').append($('<li>'+ message.val().message +'</li>'))
+//
+//                });
 
             }
 

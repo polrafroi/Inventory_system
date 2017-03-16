@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Branch;
 use App\Products;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Theme;
@@ -72,14 +73,6 @@ class DashboardController extends Controller
 
 
 
-
-    public function viewDashboardMobile(){
-
-        $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
-        return $theme->of('mobiledashboard')->render();
-    }
-
-
     public function viewProducts(){
 
         $products = DB::table('products')->get();
@@ -96,5 +89,19 @@ class DashboardController extends Controller
         }
 
     }
+
+
+    public function viewUsers(){
+        $theme = Theme::uses('default')->layout('main')->setTitle('Dashboard');
+        return $theme->of('users.user',['branch'=>Branch::all()])->render();
+    }
+
+
+    public function viewDashboardMobile(){
+
+        $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
+        return $theme->of('mobiledashboard')->render();
+    }
+
 
 }

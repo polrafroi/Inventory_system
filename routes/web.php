@@ -59,21 +59,16 @@ Route::group(['middleware' => 'isAdmin'], function(){
 
 
 
-
-Route::get('/user', 'UserController@viewUser');
-
-
-
-
-
 Route::get('/printReceipt', 'ProductController@printReceipt');
-
 Route::get('/user-ajax'                               ,   'UserController@userAjax');
-
 Route::get('/mobile', 'DashboardController@viewDashboardMobile');
+
+Route::get('/loadUser', 'UserController@loadUser');
+
+Route::post('/addUser', 'UserController@addUser');
 
 
 Route::get('/dashboard', 'DashboardController@viewProducts');
 Route::get('/manageproducts', 'DashboardController@viewManageProducts');
 Route::get('/productout', 'DashboardController@viewProductOut');
-
+Route::get('/user', 'DashboardController@viewUsers');
