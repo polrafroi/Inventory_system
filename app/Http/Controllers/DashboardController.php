@@ -67,10 +67,14 @@ class DashboardController extends Controller
     public function viewProductOut(){
 
     $total = DB::table('temp')->join('products','products.id','temp.product_id')->select(DB::raw('sum(temp.product_qty * products.unit_price) as Total'))->first();
+        $products = DB::table('products')->get();
 
+        $data = [
+            'products' => $products
+        ];
             if($this->isMobile()){
                 $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
-                return $theme->of('mobileproductout')->render();
+                return $theme->of('mobileproductout',$data)->render();
             }else{
                 $theme = Theme::uses('default')->layout('main')->setTitle('M');
                 return $theme->of('products.productout',['Total'=>$total->Total,'branch'=>Branch::all()])->render();
@@ -99,6 +103,7 @@ class DashboardController extends Controller
     }
 
 
+
     public function viewUsers(){
         $theme = Theme::uses('default')->layout('main')->setTitle('Dashboard');
         return $theme->of('users.user',['branch'=>Branch::all()])->render();
@@ -109,6 +114,15 @@ class DashboardController extends Controller
 
         $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
         return $theme->of('mobiledashboard')->render();
+    }
+
+
+
+    public function viewchatMobile(){
+        if($this->isMobile()){
+            $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
+            return $theme->of('mobilechat')->render();
+        }
     }
 
 

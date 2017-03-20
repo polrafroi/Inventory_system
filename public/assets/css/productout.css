@@ -1,0 +1,8 @@
+.navbar-fixed .page>.searchbar, .navbar-fixed>.searchbar, .navbar-through .page>.searchbar, .navbar-through>.searchbar {
+    top: 92px !important;
+}
+
+.list-block {
+    margin: 50px 0;
+    font-size: 17px;
+}

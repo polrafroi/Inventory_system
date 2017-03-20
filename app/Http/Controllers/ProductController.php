@@ -139,4 +139,20 @@ class ProductController extends Controller
 
 
     }
+
+
+    public function viewProductsMobile(){
+        if($this->isMobile()){
+            $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
+            return $theme->of('mobileproducts')->render();
+        }
+    }
+
+
+    public function viewProductInMobile(){
+        if($this->isMobile()){
+            $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
+            return $theme->of('mobileproductin')->render();
+        }
+    }
 }

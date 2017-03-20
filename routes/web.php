@@ -71,4 +71,15 @@ Route::post('/addUser', 'UserController@addUser');
 Route::get('/dashboard', 'DashboardController@viewProducts');
 Route::get('/manageproducts', 'DashboardController@viewManageProducts');
 Route::get('/productout', 'DashboardController@viewProductOut');
+
 Route::get('/user', 'DashboardController@viewUsers');
+
+
+
+Route::get('/products', 'ProductController@viewProductsMobile');
+
+Route::get('/productin', 'ProductController@viewProductInMobile');
+
+Route::get('/chatmobile', 'DashboardController@viewchatMobile');
+
+
