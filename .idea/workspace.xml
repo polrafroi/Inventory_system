@@ -72,10 +72,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DashboardController.php" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="DashboardController.php" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DashboardController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="119" column="0" selection-start="3879" selection-end="3879" vertical-scroll-proportion="1.092559" vertical-offset="1319" max-vertical-offset="2431">
+            <state line="100" column="0" selection-start="3357" selection-end="3357" vertical-scroll-proportion="-10.730769" vertical-offset="1319" max-vertical-offset="2431">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="config.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/public/themes/default/config.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="85" column="0" selection-start="3419" selection-end="3419" vertical-scroll-proportion="0.46453902" vertical-offset="1183" max-vertical-offset="2125">
               <folding />
             </state>
           </provider>
@@ -157,7 +166,6 @@
         <option value="$PROJECT_DIR$/app/Http/Controllers/ProductController.php" />
         <option value="$PROJECT_DIR$/resources/views/products/productout.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/mobiledashboard.blade.php" />
-        <option value="$PROJECT_DIR$/public/themes/default/config.php" />
         <option value="$PROJECT_DIR$/public/assets/css/scrolling-nav.css" />
         <option value="$PROJECT_DIR$/public/themes/default/layouts/main.blade.php" />
         <option value="$PROJECT_DIR$/routes/web.php" />
@@ -169,6 +177,7 @@
         <option value="$PROJECT_DIR$/resources/views/products/manageproduct.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/products/productin.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/DashboardController.php" />
+        <option value="$PROJECT_DIR$/public/themes/default/config.php" />
       </list>
     </option>
   </component>
@@ -555,6 +564,36 @@
               <option name="myItemId" value="plugins" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="datatables" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Inventory_system" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Inventory_system" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="public" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="assets" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="js" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="plugins" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
           </PATH>
           <PATH>
             <PATH_ELEMENT>
@@ -601,10 +640,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="plugins" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="datatables" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -775,11 +810,11 @@
       <recent name="C:\xampp\htdocs\Inventory_system\public\assets" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\Inventory_system\public\assets\css" />
       <recent name="C:\xampp\htdocs\Inventory_system\resources\views\products" />
       <recent name="C:\xampp\htdocs\Inventory_system\resources\views\dashboard" />
       <recent name="C:\xampp\htdocs\Inventory_system\resources\views" />
       <recent name="C:\xampp\htdocs\Inventory_system\public\assets\css\plugins\bootstrap-sweetalert" />
-      <recent name="C:\xampp\htdocs\Inventory_system\app" />
     </key>
   </component>
   <component name="RunManager">
@@ -938,7 +973,7 @@
         <state line="11" column="0" selection-start="149" selection-end="149" vertical-scroll-proportion="0.0" vertical-offset="187" max-vertical-offset="289" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/public/assets/css/plugins/datatables/dataTables.bootstrap.min.css">
+    <entry file="file://$PROJECT_DIR$/public/assets/css/dataTables.bootstrap.min.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="53" selection-start="53" selection-end="53" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="598" />
       </provider>
@@ -1031,11 +1066,6 @@
     <entry file="file://$PROJECT_DIR$/public/assets/css/scrolling-nav.css">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="0" selection-start="209" selection-end="297" vertical-scroll-proportion="0.17056856" vertical-offset="0" max-vertical-offset="1105" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/themes/default/config.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="73" column="68" selection-start="2832" selection-end="2832" vertical-scroll-proportion="0.0" vertical-offset="1030" max-vertical-offset="2125" />
       </provider>
     </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavaScriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
@@ -1132,7 +1162,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/DashboardController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="119" column="0" selection-start="3879" selection-end="3879" vertical-scroll-proportion="1.092559" vertical-offset="1319" max-vertical-offset="2431">
+        <state line="100" column="0" selection-start="3357" selection-end="3357" vertical-scroll-proportion="-10.730769" vertical-offset="1319" max-vertical-offset="2431">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/themes/default/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="85" column="0" selection-start="3419" selection-end="3419" vertical-scroll-proportion="0.46453902" vertical-offset="1183" max-vertical-offset="2125">
           <folding />
         </state>
       </provider>

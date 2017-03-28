@@ -81,8 +81,8 @@ return array(
 
             //datatables
             //css
-            $theme->asset()->add('dataTables.bootstrap.min.css', 'assets/css/plugins/datatables/dataTables.bootstrap.min.css');
-            $theme->asset()->add('responsive.bootstrap.min.css', 'assets/css/plugins/datatables/responsive.bootstrap.min.css');
+            $theme->asset()->add('dataTables.bootstrap.min.css', 'assets/css/dataTables.bootstrap.min.css');
+            $theme->asset()->add('responsive.bootstrap.min.css', 'assets/css/responsive.bootstrap.min.css');
 
             //js
             $theme->asset()->add('jquery.dataTables.min.js', 'assets/js/plugins/datatables/jquery.dataTables.min.js');
