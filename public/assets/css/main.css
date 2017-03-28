@@ -377,7 +377,7 @@ th{
     position: fixed;
     right: 20px;
     bottom: 0;
-    width: 220px;
+    width: 200px;
     z-index: 999;
 }
 .chat-list .panel{
@@ -456,13 +456,13 @@ th{
     padding: 0;
     margin: 0;
     float: right;
-    margin-right: 250px;
+    margin-right: 225px;
 }
 
 .user-chat-list ul .chat-list1{
     display: inline-block;
     list-style-type: none;
-    width: 250px;
+    width: 200px;
     background: #f4f4f4;
     margin: 0 2px;
     position: relative;
@@ -588,4 +588,7 @@ th{
 }
 
 
+.message-receive .row .col-md-3{
+    padding-left: 0;
+}
 /*END OF CHAT*/

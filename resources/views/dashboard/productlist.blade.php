@@ -1,10 +1,9 @@
 <div class="row">
     <div class="col-md-3">
-        <input type="text" class="form-control" id="product_search" placeholder="Searching..">
+        <input type="text" class="form-control" id="product_search" placeholder="Search">
     </div>
 </div>
 <div class="row">
-
     <div class="col-md-12">
         <table class="table table-striped table-bordered dt-responsive nowrap" id="products" width="100%">
             <thead>
@@ -15,7 +14,6 @@
             <th>Unit</th>
             <th>Qty</th>
             <th>Unit Price</th>
-
             </thead>
         </table>
     </div>

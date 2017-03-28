@@ -33,7 +33,7 @@ $(document).ready(function () {
 
         })
 
-        if(isSame == false && ctr <=3 ){
+        if(isSame == false && ctr <=4 ){
 
             $('.user-chat-list-container .chat-container-list').append($('<li class="chat-list1">' +
                 '<div class="panel panel-default">' +
@@ -63,6 +63,7 @@ $(document).ready(function () {
             createRoom($(this).data('id'),$('#user_id').val());
 
         }
+
 
     });
 
@@ -128,12 +129,25 @@ function initFireBase(){
     firebase.initializeApp(config);
 
     displayChatList();
+
+    changeStatus($('#user_id').val());
+
+}
+
+function changeStatus(user_id){
+    var  dbRefObject = firebase.database().ref('users/'+user_id);
+    var date = new Date();
+    dbRefObject.update({
+        status: 1
+    });
+
 }
 
 function displayChatList(){
-    var user_list  = firebase.database().ref('users');
 
+    var user_list  = firebase.database().ref('users');
     user_list.on('child_added',function(snap){
+
         if($('#user_id').val() != snap.key ){
             var status = (snap.val().status == 1) ? 'online' : 'offline';
             $('.user-list').append($('<li class="'+ status +'" data-id='+ snap.key +'>' +
@@ -216,7 +230,9 @@ function createRoom(user_id,current_user){
 
             });
 
-            $('.chat-list1 .chat-body ').animate({ scrollTop: $('.chat-list1 .chat-body').prop("scrollHeight")}, 1000);
+
+
+            $('.chat-list1 .chat-body').scrollTop($('.user-message li').last().position().top + $('.user-message li').last().height());
 
         }
 
@@ -237,7 +253,7 @@ function sendMessage(chat_room_id,user_id,message){
         from_id: user_id,
         message: message
     });
-    $('.chat-list1 .chat-body ').animate({ scrollTop: $('.chat-list1 .chat-body').prop("scrollHeight")}, 1000);
+    $('.chat-list1 .chat-body ').animate({ scrollTop: $('.chat-list1 .chat-body').prop("scrollHeight")}, 1);
 }
 
 function arrayCompare(a,b){

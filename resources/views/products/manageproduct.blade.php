@@ -93,7 +93,7 @@
 </style>
 <div class="row">
     <div class="col-md-3 col-xs-6">
-        <input type="text" class="form-control" id="product_search" placeholder="Searching..">
+        <input type="text" class="form-control" id="product_search" placeholder="Search">
     </div>
     <div class="col-md-2 col-md-offset-7 col-xs-6">
         <button class="btn btn-primary add-product">Add</button>

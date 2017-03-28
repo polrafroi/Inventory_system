@@ -83,6 +83,20 @@ class DashboardController extends Controller
 
     }
 
+    public function viewProductIn(){
+
+        $total = DB::table('temp')->join('products','products.id','temp.product_id')->select(DB::raw('sum(temp.product_qty * products.unit_price) as Total'))->first();
+        $products = DB::table('products')->get();
+
+        $data = [
+            'products' => $products
+        ];
+
+        $theme = Theme::uses('default')->layout('main')->setTitle('M');
+        return $theme->of('products.productout')->render();
+
+    }
+
 
 
     public function viewProducts(){
