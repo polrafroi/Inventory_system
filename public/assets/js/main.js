@@ -7,7 +7,7 @@ $(document).ready(function () {
 
 
     $('.chat-list .chat-body').slideToggle(300, 'swing');
-    $('.closed').on('click', function() {
+    $('.chat-list .chat-header').on('click', function() {
         $('.chat-list .chat-body').slideToggle(300, 'swing');
     });
 

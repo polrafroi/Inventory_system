@@ -225,7 +225,7 @@
                     'code':$('#code').val(),
                     'description':$('#description').val(),
                     'unit':$('#unit').val(),
-                    'qty':$('#qty').val(),
+                    'qty':$('#quantity').val(),
                     'unit_price':$('#unit_price').val()
                 },
                 success: function(data){

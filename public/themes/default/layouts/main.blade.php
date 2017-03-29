@@ -33,8 +33,8 @@
                 <ul class="dropdown-menu" role="menu">
                     <li class="dropdown-header">Action</li>
                     <li><a href="{{ URL::to('manageproducts') }}">Manage Products</a></li>
-                    <li><a href="#">Product In</a></li>
-                    <li><a href="/productout">Product Out</a></li>
+                    <li><a href="{{ URL::to('productin') }}">Product In</a></li>
+                    <li><a href="{{ URL::to('productout') }}">Product Out</a></li>
                 </ul>
             </li>
 
