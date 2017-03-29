@@ -130,13 +130,10 @@ class ProductController extends Controller
             DB::table('receipt_ctr')->insert(['ctr'=>'ctr']);
             DB::table('temp')->whereIn('temp_id',$arr_id)->delete();
             array_push($getAllReceipt,$receiptNumber);
-
-
         }
 
         $pdf = PDF::loadView('pdf.invoice',['receipt_no'=>$getAllReceipt,'location'=>$request->location])->setPaper('a4')->setWarnings(false);
-        return $pdf->stream();
-
+        return $pdf->download('invoice-'.date('Y-m-d').'.pdf');
 
     }
 
