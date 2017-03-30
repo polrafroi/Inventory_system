@@ -61,7 +61,7 @@
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-folder-open"></i> Receipts<span class="caret"></span></a>
                 <ul class="dropdown-menu" role="menu">
                     <li class="dropdown-header">Action</li>
-                    <li><a href="{{ URL::to('user') }}">Manage Receipt</a></li>
+                    <li><a href="{{ URL::to('managereceipt') }}">Manage Receipt</a></li>
 
                 </ul>
             </li>
@@ -79,7 +79,7 @@
             <span class="hamb-bottom"></span>
         </button>
         <div class="user-online">
-            <div class="name-online">{!! Auth::user()->store_name.' '.'-'.' '.Auth::user()->firstname.' '.Auth::user()->lastname !!}</div>
+            <div class="name-online">{!! Auth::user()->first_name.' '.Auth::user()->last_name !!}</div>
             <div class="img-online">
                 <img class="slide-image" src="http://placehold.it/1344x523" alt="">
             </div>

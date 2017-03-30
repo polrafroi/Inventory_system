@@ -78,6 +78,10 @@ Route::get('/productin', 'DashboardController@viewProductIn');
 
 Route::get('/user', 'DashboardController@viewUsers');
 
+Route::get('/managereceipt', 'DashboardController@viewManageReceipt');
+
+Route::get('/getReceipts', 'ReceiptController@getReceipts');
+
 
 
 Route::get('/products', 'ProductController@viewProductsMobile');

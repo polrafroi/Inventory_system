@@ -122,7 +122,7 @@
             Date: 10/27/13
         </div>
 
-            
+
 
         <table class="table" id="sample" width="100%">
             <thead>
@@ -147,7 +147,7 @@
                 <td>{!! $val->brand !!}</td>
                 <td>{!! $val->category !!}</td>
                 <td>{!! $val->code !!}</td>
-                <td>{!! $val->description !!}}</td>
+                <td>{!! $val->description !!}</td>
                 <td>{!! $val->unit !!}</td>
                 <td>{!! $val->qty !!}</td>
                 <td>{!! $val->unit_price !!}</td>

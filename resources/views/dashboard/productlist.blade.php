@@ -3,6 +3,7 @@
         <input type="text" class="form-control" id="product_search" placeholder="Search">
     </div>
 </div>
+
 <div class="row">
     <div class="col-md-12">
         <table class="table table-striped table-bordered dt-responsive nowrap" id="products" width="100%">
@@ -34,7 +35,26 @@
 
 
 
+
+//        var emoji = $('#emoji-josn').data('json');
+//
+//        $(emoji).each(function(index,val){
+//           saveEmojis(val)
+//        });
+
+
+
     });
+
+//    function saveEmojis(name){
+//
+//        //add attributes to object messages
+//        var newPostKey = firebase.database().ref().child('emoji').push().key;
+//        firebase.database().ref('emoji/'+newPostKey).set({
+//            emoji_name: name
+//        });
+//
+//    }
 
 
 

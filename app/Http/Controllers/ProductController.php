@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
 use Theme;
 use App\Products;
+use Auth;
 use \App\Temp;
 use PDF;
 
@@ -113,6 +114,7 @@ class ProductController extends Controller
     public function printReceipt(Request $request){
 
         $location = Input::get('location');
+        $branch_id = Input::get('branch_id');
 
         $getProducts = DB::table('products')->join('temp','temp.product_id','products.id')
             ->select('temp.temp_id','temp.product_qty','products.*')
@@ -127,13 +129,16 @@ class ProductController extends Controller
 
                 DB::table('product_out')->insert(['product_id'=>$val->id,'qty'=>$val->product_qty,'receipt_id'=>$receiptNumber]);
             }
+            DB::table('receipts')->insert(['receipt_no'=>$receiptNumber,'branch_id'=>$branch_id,'created_by'=>Auth::user()->first_name.' '.Auth::user()->last_name]);
             DB::table('receipt_ctr')->insert(['ctr'=>'ctr']);
             DB::table('temp')->whereIn('temp_id',$arr_id)->delete();
             array_push($getAllReceipt,$receiptNumber);
         }
 
+        $receipts = implode('-',$getAllReceipt);
+
         $pdf = PDF::loadView('pdf.invoice',['receipt_no'=>$getAllReceipt,'location'=>$request->location])->setPaper('a4')->setWarnings(false);
-        return $pdf->download('invoice-'.date('Y-m-d').'.pdf');
+        return $pdf->download('invoice-'.$receipts.'-'.date('Y-m-d').'.pdf');
 
     }
 

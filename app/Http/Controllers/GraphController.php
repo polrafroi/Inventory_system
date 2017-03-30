@@ -48,4 +48,5 @@ class GraphController extends Controller
         $theme = Theme::uses('default')->layout('default')->setTitle('M');
         return $theme->of('graphs', compact('chartjs'))->render();
     }
+
 }

@@ -101,6 +101,11 @@ return array(
             //moment
             $theme->asset()->add('jquery.moment', 'assets/js/plugins/moment/moment.js');
 
+            //emojify
+            $theme->asset()->add('emojify.css', 'assets/css/emojify.css');
+            $theme->asset()->add('emojify.js', 'assets/js/emojify.js');
+
+
 
         },
 

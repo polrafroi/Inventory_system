@@ -6,8 +6,10 @@ namespace App\Http\Controllers;
 use App\Branch;
 use App\Products;
 use App\User;
+use App\Receipts;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Theme;
 use DB;
 class DashboardController extends Controller
@@ -60,6 +62,9 @@ class DashboardController extends Controller
 
 
     public function viewManageProducts(){
+
+
+
         $theme = Theme::uses('default')->layout('main')->setTitle('Dashboard');
         return $theme->of('products.manageproduct')->render();
     }
@@ -97,16 +102,27 @@ class DashboardController extends Controller
     public function viewProducts(){
 
         $products = DB::table('products')->get();
+//
+//        $emoji = [];
+//        $files = File::allfiles(public_path('assets\\emoji'));
+//        foreach($files as $key => $file){
+//            $filename = substr($file->getFilename(),0,strlen($file->getFilename()));
+//            array_push($emoji,$filename);
+//        }
 
         $data = [
-            'products' => $products
+            'products' => $products,
+//            'emoji' => $emoji
         ];
+
+
+
         if($this->isMobile()){
             $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
             return $theme->of('mobiledashboard', $data)->render();
         }else{
             $theme = Theme::uses('default')->layout('main')->setTitle('Dashboard');
-            return $theme->of('dashboard.productlist')->render();
+            return $theme->of('dashboard.productlist',$data)->render();
         }
 
     }
@@ -117,6 +133,13 @@ class DashboardController extends Controller
         $theme = Theme::uses('default')->layout('main')->setTitle('Dashboard');
         return $theme->of('users.user',['branch'=>Branch::all()])->render();
     }
+
+    public function viewManageReceipt(){
+        $theme = Theme::uses('default')->layout('main')->setTitle('Dashboard');
+        return $theme->of('receipt.managereceipt')->render();
+    }
+
+
 
 
     public function viewDashboardMobile(){

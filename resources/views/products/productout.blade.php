@@ -151,7 +151,7 @@
                     <select class="form-control" id="location">
                         <option selected>Choose Location</option>
                         @foreach ($branch as $key => $val)
-                            <option>{{ $val->branch_name }}</option>
+                            <option value="{{ $val->id }}">{{ $val->branch_name }}</option>
                         @endforeach
                     </select>
                 </div>
@@ -197,14 +197,8 @@
 <script>
     $(document).ready(function(){
 
-        try{
             loadProduct();
             loadDataList();
-        }catch (err){
-            alert('dd')
-        }
-
-
 
         //remove search to create your own
         $('#search-table_filter input').unbind();
@@ -271,17 +265,12 @@
 
             if($('#location').val()!='Choose Location'){
                 var BASEURL = $('#baseURL').val();
-                window.open(BASEURL +'/printReceipt?location='+$('#location').val());
+                window.open(BASEURL +'/printReceipt?location='+$('#location option:selected').text()+'&branch_id='+$('#location').val());
                 location.reload();
                 $('.total-container p').text('');
             }else{
                 swal('','Please choose location','error')
             }
-
-
-
-
-
         })
 
         //text handling

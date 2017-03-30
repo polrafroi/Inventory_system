@@ -1,7 +1,8 @@
+
 $(document).ready(function () {
 
 
-
+    runEmoji();
     initFireBase();
 
 
@@ -82,6 +83,7 @@ $(document).ready(function () {
 
 
 
+
 //-----------------------------------------------
     var trigger = $('.hamburger'),
         overlay = $('.overlay'),
@@ -113,6 +115,8 @@ $(document).ready(function () {
     }
 
 
+
+
 });
 
 
@@ -124,13 +128,18 @@ function initFireBase(){
         authDomain: "mcoat-chat.firebaseapp.com",
         databaseURL: "https://mcoat-chat.firebaseio.com",
         storageBucket: "mcoat-chat.appspot.com",
-        messagingSenderId: "132380463520"
+        messagingSenderId: "132380463520",
+        storageBucket: 'gs://mcoat-chat.appspot.com'
     };
     firebase.initializeApp(config);
+
 
     displayChatList();
 
     changeStatus($('#user_id').val());
+//    getEmojis();
+
+
 
 }
 
@@ -260,4 +269,43 @@ function arrayCompare(a,b){
     return $(a).not(b).length === 0 && $(a).not(b).length === 0;
 }
 
+
+//function getEmojis(){
+//
+//    var emoji_list  = firebase.database().ref('emoji');
+//    emoji_list.on('value',function(data){
+//        data.forEach(function(dataChild){
+//            var storage = firebase.storage().ref();
+//            var storageRef = storage.child('emoji/'+ dataChild.val().emoji_name);
+//
+//            var image = storageRef.getDownloadURL().then(function(url){
+//
+//                $('.emoji-list').append($('<div> <img src="'+ url +'" > </div>'));
+//
+//            })
+//        });
+//
+//    });
+//
+//}
+
+function runEmoji(){
+    var BASEURL = $('#baseURL').val();
+
+    emojify.setConfig({
+
+        emojify_tag_type : 'div',           // Only run emojify.js on this element
+        only_crawl_id    : null,            // Use to restrict where emojify.js applies
+        img_dir          : BASEURL+'/assets/emoji',  // Directory for emoji images
+        ignored_tags     : {                // Ignore the following tags
+            'SCRIPT'  : 1,
+            'TEXTAREA': 1,
+            'A'       : 1,
+            'PRE'     : 1,
+            'CODE'    : 1
+        }
+    });
+
+    emojify.run();
+}
 
