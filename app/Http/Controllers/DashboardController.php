@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Theme;
 use DB;
+use Auth;
 class DashboardController extends Controller
 {
     public function viewDashboard(){
@@ -69,8 +70,15 @@ class DashboardController extends Controller
     $total = DB::table('temp')->join('products','products.id','temp.product_id')->select(DB::raw('sum(temp.product_qty * products.unit_price) as Total'))->first();
         $products = DB::table('products')->get();
 
+        $productstemp = DB::table('temp')
+                        ->join('products','products.id','=','temp.product_id')
+                        ->where('user_id',Auth::user()->id)
+                        ->get();
+
+
         $data = [
-            'products' => $products
+            'products' => $products,
+            'temp'     => $productstemp
         ];
             if($this->isMobile()){
                 $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
@@ -103,9 +111,7 @@ class DashboardController extends Controller
 
         $products = DB::table('products')->get();
 
-        $data = [
-            'products' => $products
-        ];
+
         if($this->isMobile()){
             $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
             return $theme->of('mobiledashboard', $data)->render();

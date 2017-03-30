@@ -6,3 +6,23 @@
     margin: 50px 0;
     font-size: 17px;
 }
+
+.toolbar.messagebar.toolbar-hidden {
+    bottom: 44px;
+}
+.content-block {
+    padding: 0 0px !important;
+}
+.col-100.total-name {
+    text-align: center;
+    font-size: 19px;
+}
+.col-100.price-name {
+    text-align: center;
+    font-size: 36px;
+    color: #319cbf;
+}
+.item-title.label {
+    font-size: 15px;
+    color: rgba(128, 128, 128, 0.79);
+}
