@@ -4,7 +4,7 @@ $(document).ready(function () {
 
     runEmoji();
     initFireBase();
-
+    getEmojis()
 
 
     $('.chat-list .chat-body').slideToggle(300, 'swing');
@@ -288,6 +288,30 @@ function arrayCompare(a,b){
 //    });
 //
 //}
+
+function getEmojis(){
+    var BASEURL = $('#baseURL').val();
+
+    $.ajax({
+        url:BASEURL+'/getEmojis',
+        type:'POST',
+        data:{
+            '_token': $('meta[name="csrf_token"]').attr('content')
+        },
+        success: function(data){
+            var json = JSON.parse(data)
+           $(json['people']).each(function(index,val){
+
+               $('.emoji-list').append($('<div>:'+val+':</div>'))
+               runEmoji()
+           })
+
+        }
+    });
+
+
+}
+
 
 function runEmoji(){
     var BASEURL = $('#baseURL').val();

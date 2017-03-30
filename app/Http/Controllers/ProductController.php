@@ -11,7 +11,7 @@ use App\Products;
 use Auth;
 use \App\Temp;
 use PDF;
-use Auth;
+
 
 class ProductController extends Controller
 {

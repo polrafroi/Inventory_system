@@ -82,6 +82,8 @@ Route::get('/managereceipt', 'DashboardController@viewManageReceipt');
 
 Route::get('/getReceipts', 'ReceiptController@getReceipts');
 
+Route::post('/getEmojis', 'EmoController@getEmojis');
+
 
 
 Route::get('/products', 'ProductController@viewProductsMobile');

@@ -84,12 +84,7 @@
                         </ul>
 
                     </div>
-                    <div>
 
-                   </div>
-                    <div>
-                        :bowtie:
-                    </div>
                 </div>
             </li>
      </ul>
