@@ -105,7 +105,9 @@ class DashboardController extends Controller
     public function viewProducts(){
 
         $products = DB::table('products')->get();
-
+        $data = [
+            'products' => $products
+        ];
 
         if($this->isMobile()){
             $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
