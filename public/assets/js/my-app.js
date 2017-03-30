@@ -10,6 +10,10 @@ var mainView = myApp.addView('.view-main', {
     dynamicNavbar: true
 });
 
+$$('.open-about').on('click', function () {
+  myApp.popup('.popup-about');
+});
+
 // Callbacks to run specific code for specific pages, for example for About page:
 myApp.onPageInit('about', function (page) {
     // run createContentPage func after link was clicked

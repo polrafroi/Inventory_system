@@ -1,4 +1,6 @@
 {!! Theme::asset()->add('out.css','assets/css/productout.css') !!}
+
+<input type="hidden" id="user_id" value="{{Auth::user()->id}}">
 <div class="navbar">
     <div class="navbar-inner">
         <div class="center sliding">List View</div>
@@ -37,3 +39,41 @@
 </div>
 </div>
 </div>
+<script>
+$(document).ready(function(){
+
+  var BASEURL = $('#baseURL').val();
+
+  $('.speed-dial-buttons').on('click',function(){
+    $('.tabbar').hide();
+        alert('sdas');
+  })
+
+  $('body').delegate('#product','click',function(){
+    $('#quantity').val('')
+    $('#product_id').val($(this).data('productid'))
+    $('#brand').val($(this).data('brand'))
+    $('#category').val($(this).data('category'))
+    $('#code').val($(this).data('code'))
+    $('#description').val($(this).data('description'))
+    $('#unit').val($(this).data('unit'))
+    $('#quantity').val($(this).data('qty'))
+    $('#unit_price').val($(this).data('unitprice'))
+  })
+
+  $('body').delegate('#add_cart','click',function(){
+    $.ajax({
+        url : BASEURL + '/addcart',
+        type: 'POST',
+        data: $("#list_product").serializeArray(),
+        success:function(data){
+            $('.price-name').text(data)
+        }
+    });
+
+  })
+
+})
+
+
+</script>

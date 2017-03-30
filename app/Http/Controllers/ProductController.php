@@ -11,6 +11,7 @@ use App\Products;
 use Auth;
 use \App\Temp;
 use PDF;
+use Auth;
 
 class ProductController extends Controller
 {
@@ -77,7 +78,7 @@ class ProductController extends Controller
             $productNewQty = $product->product_qty + $qty;
             DB::table('temp')->where('product_id',$product_id)->update(['product_qty'=>$productNewQty]);
         }else{
-            Temp::insert(['product_id'=>$product_id,'product_qty'=>$qty]);
+            Temp::insert(['product_id'=>$product_id,'product_qty'=>$qty,'user_id'=>Auth::user()->id]);
         }
 
         $getOldQty = Products::where('id',$product_id)->first()->qty;
@@ -177,4 +178,5 @@ class ProductController extends Controller
             return $theme->of('mobileproductin')->render();
         }
     }
+
 }

@@ -1,10 +1,15 @@
 {!! Theme::asset()->add('out.css','assets/css/productout.css') !!}
+<style>
+.toolbar.messagebar.toolbar-hidden {
+    bottom: 44px;
+}
+</style>
 <div class="navbar">
   <div class="navbar-inner">
     <div class="left sliding"><a href="index.html" class="back link"><i class="icon icon-back"></i><span>Back</span></a></div>
     <div class="center sliding">Swipeable Tabs</div>
     <div class="subnavbar sliding">
-      <div class="buttons-row"><a href="#tab1" class="button active tab-link">Tab 1</a><a href="#tab2" class="button tab-link">Tab 2</a><a href="#tab3" class="button tab-link">Tab 3</a></div>
+      <div class="buttons-row"><a href="#tab1" class="button active tab-link">Tab 1</a><a href="#tab2" class="button tab-link">Tab 2</a></div>
     </div>
   </div>
 </div>
@@ -37,7 +42,7 @@
                           <ul>
                               @foreach ($products as $product)
                               <li>
-                                  <a href="#" data-popup=".demo-popup" class="item-link item-content open-popup">
+                                  <a href="#" data-popup=".popup-about" data-productid="{{$product->id}}" data-brand="{{$product->brand}}" data-category="{{$product->category}}" data-code="{{$product->code}}" data-description="{{$product->description}}" data-unit="{{$product->unit}}" data-quantity="{{$product->qty}}" data-unitprice="{{$product->unit_price}}" class="item-link item-content open-popup" id="product">
                                       <div class="item-media"><img src="http://lorempixel.com/160/160/people/1" width="80"/></div>
                                       <div class="item-inner">
                                           <div class="item-title-row">
@@ -58,16 +63,68 @@
         </div>
         <div id="tab2" class="page-content tab">
           <div class="content-block">
-            <p>This is tab 2 content</p>
-            <p>Ut ac lobortis lacus, non pellentesque arcu. Quisque sodales sapien malesuada, condimentum nunc at, viverra lacus. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Vivamus eu pulvinar turpis, id tristique quam. Aenean venenatis molestie diam, sit amet condimentum nisl pretium id. Donec diam tortor, mollis in vehicula id, vehicula consectetur nulla. Quisque posuere rutrum mauris, eu rutrum turpis blandit at. Proin volutpat tortor sit amet metus porttitor accumsan. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Ut dapibus posuere dictum.</p>
-            <p>Fusce luctus turpis nunc, id porta orci blandit eget. Aenean sodales quam nec diam varius, in ornare ipsum condimentum. Aenean eleifend, nulla sit amet volutpat adipiscing, ligula nulla pharetra risus, vitae consequat leo tortor eu nunc. Vivamus at fringilla metus. Duis neque lectus, sagittis in volutpat a, pretium vel turpis. Nam accumsan auctor libero, quis sodales felis faucibus quis. Etiam vestibulum sed nisl vel aliquet. Aliquam pellentesque leo a lacus ultricies scelerisque. Vestibulum vestibulum fermentum tincidunt. Proin eleifend metus non quam pretium, eu vehicula ipsum egestas. Nam eget nibh enim. Etiam sem leo, pellentesque a elit vel, egestas rhoncus enim. Morbi ultricies adipiscing tortor, vitae condimentum lacus hendrerit nec. Phasellus laoreet leo quis purus elementum, ut fringilla justo eleifend. Nunc ultricies a sapien vitae auctor. Aliquam id erat elementum, laoreet est et, dapibus ligula.</p>
+            <div class="content-block" style="padding: 0 15px !important;">
+              <div class="ks-grid">
+                <div class="row">
+                  <div class="col-100">
+                    <div class="list-block" style="margin: 5px 10px !important;">
+                      <ul>
+                        <li>
+                          <a href="#" class="item-link smart-select">
+                            <select name="fruits">
+                              <option value="apple" selected="selected">Apple</option>
+                              <option value="pineapple">Pineapple</option>
+                              <option value="pear">Pear</option>
+                            </select>
+                            <div class="item-content">
+                              <div class="item-inner">
+                                <div class="item-title">Location</div>
+                              </div>
+                            </div>
+                          </a>
+                          </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-100 total-name">Total</div>
+                </div>
+                <div class="row">
+                  <div class="col-100 price-name">P10000</div>
+                </div>
+                <div class="row">
+                  <div class="col-100">
+                    <div class="list-block inset" style="margin: 11px 10px !important;">
+                      <ul>
+                        <li><a href="#" class="list-button item-link color-red">Lorem</a></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="content-block-title">Cart</div>
+            <div class="list-block media-list">
+              <ul>
+                @foreach ($temp as $product)
+                <li>
+                    <a href="#" data-popup=".popup-about" data-productid="{{$product->id}}" data-brand="{{$product->brand}}" data-category="{{$product->category}}" data-code="{{$product->code}}" data-description="{{$product->description}}" data-unit="{{$product->unit}}" data-quantity="{{$product->qty}}" data-unitprice="{{$product->unit_price}}" class="item-link item-content open-popup" id="product">
+                        <div class="item-media"><img src="http://lorempixel.com/160/160/people/1" width="80"/></div>
+                        <div class="item-inner">
+                            <div class="item-title-row">
+                                <div class="item-title">{{$product->description}} Lorem ipsum</div>
+                                <div class="item-after">P{{$product->unit_price}}</div>
+                            </div>
+                            <div class="item-subtitle">{{$product->brand}}</div>
+                            <div class="item-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla sagittis tellus ut turpis condimentum, ut dignissim lacus tincidunt. Cras dolor metus, ultrices condimentum sodales sit amet, pharetra sodales eros. Phasellus vel felis tellus. Mauris rutrum ligula nec dapibus feugiat. In vel dui laoreet, commodo augue id, pulvinar lacus.</div>
+                        </div>
+                    </a>
+                </li>
+                @endforeach
+              </ul>
+            </div>
           </div>
-        </div>
-        <div id="tab3" class="page-content tab">
-          <div class="content-block">
-            <p>This is tab 3 content</p>
-            <p>Nulla gravida libero eget lobortis iaculis. In sed elit eu nibh adipiscing faucibus. Sed ac accumsan lacus. In ut diam quis turpis fringilla volutpat. In ultrices dignissim consequat. Cras pretium tortor et lorem condimentum posuere. Nulla facilisi. Suspendisse pretium egestas lacus ac laoreet. Mauris rhoncus quis ipsum quis tristique. Vivamus ultricies urna quis nunc egestas, in euismod turpis fringilla. Nam tellus massa, vehicula eu sapien non, dapibus tempor lorem. Fusce placerat orci arcu, eu dignissim enim porttitor vel. Nullam porttitor vel dolor sed feugiat. Suspendisse potenti. Maecenas ac mattis odio. Sed vel ultricies lacus, sed posuere libero.</p>
-            <p>Nulla gravida libero eget lobortis iaculis. In sed elit eu nibh adipiscing faucibus. Sed ac accumsan lacus. In ut diam quis turpis fringilla volutpat. In ultrices dignissim consequat. Cras pretium tortor et lorem condimentum posuere. Nulla facilisi. Suspendisse pretium egestas lacus ac laoreet. Mauris rhoncus quis ipsum quis tristique. Vivamus ultricies urna quis nunc egestas, in euismod turpis fringilla. Nam tellus massa, vehicula eu sapien non, dapibus tempor lorem. Fusce placerat orci arcu, eu dignissim enim porttitor vel. Nullam porttitor vel dolor sed feugiat. Suspendisse potenti. Maecenas ac mattis odio. Sed vel ultricies lacus, sed posuere libero.</p>
           </div>
         </div>
       </div>

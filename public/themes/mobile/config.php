@@ -71,7 +71,7 @@ return array(
 
           $theme->asset()->add('my-app.js', 'assets/js/my-app.js');
           $theme->asset()->add('framework7.min.js', 'assets/js/framework7.min.js');
-          $theme->asset()->add('framework7.min.js', 'assets/js/framework7.js');
+          $theme->asset()->add('framework7.js', 'assets/js/framework7.js');
 
 
 
