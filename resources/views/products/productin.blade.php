@@ -65,7 +65,7 @@
     }
 
     .location{
-        padding-top: 30px;
+        padding-top: 25px;
     }
 
     .total-container{
@@ -91,6 +91,9 @@
         margin-top: 5px;
     }
 
+    .rec_no{
+        margin-top: 5px;
+    }
 </style>
 <div class="row">
     <div class="col-md-3">
@@ -112,10 +115,8 @@
                 <input type="text" class="form-control" id="description" disabled>
 
                 <label>Unit</label>
-                <select class="form-control" id="unit" disabled>
-                    <option>Gal.</option>
-                    <option>Ltr.</option>
-                </select>
+                <input type="text" class="form-control" id="unit" disabled>
+
 
                 <label>Total Quantity</label>
                 <input type="text" class="form-control" id="qty" disabled>
@@ -124,9 +125,9 @@
                 <input type="text" class="form-control" id="unit_price" disabled>
 
                 <label class="input-qty" >Input quantity</label>
-                <input type="text" class="form-control" id="input-qty" maxlength="10">
+                <input type="text" class="form-control" id="input-qty" maxlength="10" disabled>
 
-                <button type="button" class="btn btn-primary" id="add-list" style="width:100%;margin-top: 10px;">Add</button>
+                <button type="button" class="btn btn-primary" id="add-list" style="width:100%;margin-top: 10px;" disabled>Add</button>
             </div>
         </form>
     </div>
@@ -134,6 +135,7 @@
         <div class="list-table-container">
             <table class="table table-striped table-bordered dt-responsive nowrap" id="list-table" width="100%">
                 <thead>
+                <th>Id</th>
                 <th>Brand</th>
                 <th>Category</th>
                 <th>Code</th>
@@ -149,27 +151,25 @@
             <div class="col-md-4 col-xs-12">
                 <div class="location">
                     <select class="form-control" id="location">
-                        <option selected>Choose Location</option>
-                        @foreach ($branch as $key => $val)
-                        <option>{{ $val->branch_name }}</option>
+                        <option selected>Choose Supplier</option>
+                        @foreach($supplier as $key => $val)
+                        <option value="{{ $val->id }}">{{ $val->supplier_name }}</option>
                         @endforeach
                     </select>
                 </div>
             </div>
-            <div class="col-md-4 col-md-offset-2 text-center col-xs-6">
+            <div class="col-md-4 col-xs-12">
+                <label></label>
+                <input type="text" class="form-control rec_no" id="rec_no" placeholder="Receipt Number">
+            </div>
+            <div class="col-md-4">
                 <div class="action-container">
                     <div class="col-md-12">
-                        <button type="submit" class="btn btn-primary" id="print">Print</button>
+                        <button type="submit" class="btn btn-primary" id="saveProductin">Save</button>
                     </div>
+                </div>
+            </div>
 
-                </div>
-            </div>
-            <div class="col-md-2 text-center col-xs-6">
-                <span style="font-weight: bold">TOTAL</span>
-                <div class="total-container">
-                    <p>{{ $Total }}</p>
-                </div>
-            </div>
 
         </div>
     </div>
@@ -197,12 +197,8 @@
 <script>
 $(document).ready(function(){
 
-    try{
-        loadProduct();
-        loadDataList();
-    }catch (err){
-        alert('dd')
-    }
+    loadProduct();
+
 
 
 
@@ -223,77 +219,78 @@ $(document).ready(function(){
         }
     });
 
+    $('#list-table').DataTable();
+
 
     $('body').delegate('#search-table tbody tr','dblclick',function(){
 
-        $('#id').val($(this).children('td:nth-child(1)').text())
-        $('#brand').val($(this).children('td:nth-child(2)').text())
-        $('#category').val($(this).children('td:nth-child(3)').text())
+        $('#id').val($(this).children('td:nth-child(1)').text());
+        $('#brand').val($(this).children('td:nth-child(2)').text());
+        $('#category').val($(this).children('td:nth-child(3)').text());
         $('#code').val($(this).children('td:nth-child(4)').text())
-        $('#description').val($(this).children('td:nth-child(5)').text())
-        $('#unit').val($(this).children('td:nth-child(6)').text())
-        $('#qty').val($(this).children('td:nth-child(7)').text())
-        $('#unit_price').val($(this).children('td:nth-child(8)').text())
-        $('#input-qty').focus();
+        $('#description').val($(this).children('td:nth-child(5)').text());
+        $('#unit').val($(this).children('td:nth-child(6)').text());
+        $('#qty').val($(this).children('td:nth-child(7)').text());
+        $('#unit_price').val($(this).children('td:nth-child(8)').text());
         $('#search-product').val('');
         $('.search').css('left','-9999px');
-
+        $('#input-qty').attr('disabled',false);
+        $('#add-list').attr('disabled',false);
+        $('#input-qty').focus();
     });
 
 
-    $('#add-list').on( 'click', function () {
-        var inputted =  parseInt($('#input-qty').val())
-        var prod_qty = parseInt($('#qty').val())
-        if( inputted > prod_qty || inputted <= 0 ){
-            swal({
-                title:'Error',
-                text: 'Invalid quantity',
-                type:'error'
-            },function(isOk){
-                if(isOk){
-                    $('#input-qty').val('');
-                    $('#input-qty').focus();
-                }
-            });
-
-        }else{
-            addtolist();
-        }
-
-
-    });
-
-    $('body').delegate('.glyphicon-remove','click',function(){
-        removetoList($(this).data('id'),$(this).data('prod_id'))
-    })
-
-    $('#print').on('click',function(){
-
-        if($('#location').val()!='Choose Location'){
-            var BASEURL = $('#baseURL').val();
-            window.open(BASEURL +'/printReceipt?location='+$('#location').val());
-            location.reload();
-            $('.total-container p').text('');
-        }else{
-            swal('','Please choose location','error')
-        }
-
-
-
-
-
-    })
 
     //text handling
     $('#input-qty').keypress(function (e) {
         if (String.fromCharCode(e.keyCode).match(/[^0-9]/g)) return false;
     });
 
+
+    $('#add-list').on('click',function(){
+        if($('#input-qty').val() != '' ){
+            addToList();
+        }else{
+            swal('','Invalid quantity','error')
+        }
+
+    })
+
+    $('body').delegate('.delete','click',function(){
+        var dTable1 = $('#list-table').DataTable();
+        var data = dTable1.rows().data()
+        var isSame = false;
+        var this_ = $(this)
+        $(data).each(function(index,value){
+            if(value[0] == this_.data('id')){
+                $('#list-table').dataTable().fnDeleteRow(index);
+            }
+        });
+    })
+
+
+    $('#saveProductin').on('click',function(){
+        var dTable1 = $('#list-table').DataTable();
+        var data = dTable1.rows().data()
+        var products = [];
+        $(data).each(function(index,value){
+            var arr =[];
+            products.push({'product_id':  value[0],'product_qty': value[6]})
+        });
+
+        if($('#location').val() == 'Choose Supplier'){
+            swal('','Please choose supplier','error')
+        }else if($('#rec_no').val() == ''){
+            swal('','Please input receipt number','error')
+        }else{
+            saveProductIn(products);
+        }
+    });
+
 })
 
 function loadProduct(){
     var BASEURL = $('#baseURL').val();
-
     $('#search-table').dataTable({
         ajax: BASEURL + '/loadProduct',
         columns:[
@@ -309,112 +306,114 @@ function loadProduct(){
         bDestroy: true,
         "order": []
     });
+
+
+    var dTable1 = $('#list-table').DataTable()
+    if(dTable1.data().count() == 0){
+        $('#saveProductin').attr('disabled',true);
+        $('#rec_no').attr('disabled',true);
+        $('#location').attr('disabled',true);
+    }
 }
 
-function addtolist(){
-    var BASEURL = $('#baseURL').val();
-
-    var search_table = $('#search-table').DataTable();
-
+function addToList(){
     var dTable1 = $('#list-table').DataTable();
+    var data = dTable1.rows().data()
+    if(dTable1.data().count() != 0){
+        var isSame = false;
+        $(data).each(function(index,value){
+            if($('#id').val() == value[0]){
+                var oldqty = value[6];
+                var newqty = parseInt(oldqty) + parseInt($('#input-qty').val());
+                $('#list-table').dataTable().fnUpdate(newqty , index, 6 );
+                isSame = true;
+            }
+        });
 
-    $.ajax({
-        url:BASEURL+'/addToList',
-        type:'POST',
-        data:{
-            '_token': $('meta[name="csrf_token"]').attr('content'),
-            'product_id':$('#id').val(),
-            'qty':$('#input-qty').val()
-        },
-        success: function(data){
-
-//                dTable1.row.add({
-//                    "brand": $('#brand').val(),
-//                    "category": $('#category').val(),
-//                    "code": $('#code').val(),
-//                    "description":  $('#description').val(),
-//                    "unit": $('#unit').val(),
-//                    "qty": $('#input-qty').val(),
-//                    "unit_price":   $('#unit_price').val(),
-//                    "action": '<i class="glyphicon glyphicon-remove"></i>'
-//                }).draw();
-            dTable1.ajax.reload(null,false); // reload table paging retained
-            search_table.ajax.reload();
-
-            $('#list-table').dataTable().fnPageChange('last');
-            $('.add-list')[0].reset();
-            $('#search-product').focus();
-
-            $('.total-container p').text(data)
-
-
+        if(!isSame){
+            dTable1.row.add([
+                $('#id').val(),
+                $('#brand').val(),
+                $('#category').val(),
+                $('#code').val(),
+                $('#description').val(),
+                $('#unit').val(),
+                $('#input-qty').val(),
+                $('#unit_price').val(),
+                '<i class="glyphicon glyphicon-remove delete" data-id="'+$('#id').val()+'"></i>'
+            ]).draw();
         }
-    });
+
+    }else{
+        dTable1.row.add([
+            $('#id').val(),
+            $('#brand').val(),
+            $('#category').val(),
+            $('#code').val(),
+            $('#description').val(),
+            $('#unit').val(),
+            $('#input-qty').val(),
+            $('#unit_price').val(),
+            '<i class="glyphicon glyphicon-remove delete" data-id="'+$('#id').val()+'"></i>'
+        ]).draw();
+    }
+
+    $('#input-qty').attr('disabled',true);
+    $('#add-list').attr('disabled',true);
+    $('#search-product').focus();
+    $('.add-list')[0].reset();
+
+    $('#saveProductin').attr('disabled',false);
+    $('#rec_no').attr('disabled',false);
+    $('#location').attr('disabled',false);
+
+    $('#list-table').dataTable().fnPageChange('last'); //This is not working
 }
 
-function removetoList(id,prod_id){
+function saveProductIn(product){
     var BASEURL = $('#baseURL').val();
-    $.ajax({
-        url:BASEURL+'/removeToList',
-        type:'POST',
-        data:{
-            '_token': $('meta[name="csrf_token"]').attr('content'),
-            'temp_id':id,
-            'product_id': prod_id
-        },
-        success: function(data){
-            swal({  title: "Are you sure?",
-                text: "You want to Remove this referral.",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: 'Remove',
-                closeOnConfirm: false
-            }, function(){
-                swal({
-                    title: "",
-                    text: "Product remove successfully",
-                    type:"success"
-                },function(isConfirm){
-                    if(isConfirm){
-                        var search_table = $('#search-table').DataTable();
-                        var dTable1 = $('#list-table').DataTable();
-                        dTable1.ajax.reload(null,false); // reload table paging retained
-                        search_table.ajax.reload();
+
+    swal({  title: "Are you sure?",
+        text: "You want to Save this data.",
+        type: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#DD6B55",
+        confirmButtonText: 'Okay',
+        closeOnConfirm: false
+    }, function(isConfirm){
+        if(isConfirm){
+            $.ajax({
+                url:BASEURL+'/saveProductIn',
+                type:'POST',
+                data:{
+                    '_token': $('meta[name="csrf_token"]').attr('content'),
+                    'products': product,
+                    'receipt_no': $('#rec_no').val(),
+                    'supplier_id': $('#location').val()
+                },
+                success: function(data){
+                    if(data == 'Data already exist'){
+                        swal('',data,'error')
+                    }else{
+                        swal({
+                            title: "",
+                            text: "Product saved successfully",
+                            type:"success"
+                        },function(isConfirm){
+                            if(isConfirm){
+                                location.reload();
+                                var search_table = $('#search-table').DataTable();
+                                search_table.ajax.reload();
+                            }
+                        });
                     }
-                });
+                }
             });
-        }
+          }
     });
 }
 
 
-function loadDataList(){
-    var BASEURL = $('#baseURL').val();
-
-    var dTable1 = $('#list-table').dataTable({
-        ajax: BASEURL + '/getTemp',
-        columns:[
-            {data: 'brand'},
-            {data: 'category'},
-            {data: 'code'},
-            {data: 'description'},
-            {data: 'unit'},
-            {data: 'qty'},
-            {data: 'unit_price'},
-            {data: 'action'}
-        ],
-        bDestroy: true,
-        "order": [],
-        "fnInitComplete": function () {
-            dTable1.fnPageChange('last');
-        }
-
-    });
-
-    $('#list-table_wrapper .dataTables_length').hide()
-
-}
 
 //New error event handling has been added in Datatables v1.10.5
 $.fn.dataTable.ext.errMode = function ( settings, helpPage, message ) {

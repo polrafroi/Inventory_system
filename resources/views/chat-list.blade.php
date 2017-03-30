@@ -3,12 +3,10 @@
         <div class="panel panel-default">
             <div class="panel-heading chat-header">
                 <div class="row">
-                    <div class="col-md-8">
+                    <div class="col-md-12">
                         Chat
                     </div>
-                    <div class="col-md-2 col-md-offset-2 closed">
-                        <i class="glyphicon glyphicon-remove"></i>
-                    </div>
+
                 </div>
             </div>
             <div class="panel-body chat-body">

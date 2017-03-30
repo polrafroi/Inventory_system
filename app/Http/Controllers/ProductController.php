@@ -131,14 +131,31 @@ class ProductController extends Controller
             DB::table('receipt_ctr')->insert(['ctr'=>'ctr']);
             DB::table('temp')->whereIn('temp_id',$arr_id)->delete();
             array_push($getAllReceipt,$receiptNumber);
-
-
         }
 
         $pdf = PDF::loadView('pdf.invoice',['receipt_no'=>$getAllReceipt,'location'=>$request->location])->setPaper('a4')->setWarnings(false);
-        return $pdf->stream();
+        return $pdf->download('invoice-'.date('Y-m-d').'.pdf');
 
+    }
 
+    public function saveProductIn(Request $request){
+        $products = $request->products;
+        $supplier_id = $request->supplier_id;
+        $receipt_no = $request->receipt_no;
+
+        //check if data exists
+
+        $ifExist = DB::table('product_in')->where('supplier_id',$supplier_id)->where('receipt_no',$receipt_no)->count();
+        if($ifExist > 0){
+            return 'Data already exist';
+        }else{
+            foreach($products as $key => $val){
+                $getOldQty = DB::table('products')->where('id',$val['product_id'])->first()->qty;
+                $newQty = $val['product_qty'] + $getOldQty;
+                DB::table('products')->where('id',$val['product_id'])->update(['qty'=>$newQty]);
+                DB::table('product_in')->insert(['product_id'=>$val['product_id'],'product_qty'=>$val['product_qty'],'receipt_no'=>$receipt_no,'supplier_id'=>$supplier_id]);
+            }
+        }
     }
 
 

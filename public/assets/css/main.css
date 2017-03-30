@@ -384,6 +384,10 @@ th{
     margin-bottom: 0;
 }
 
+.chat-list .chat-header{
+    cursor: pointer;
+}
+
 .chat-list .chat-header,.chat-footer{
     padding: 10px 0;
 }
