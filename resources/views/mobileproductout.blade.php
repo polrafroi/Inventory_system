@@ -91,7 +91,7 @@
                   <div class="col-100 total-name">Total</div>
                 </div>
                 <div class="row">
-                  <div class="col-100 price-name">P10000</div>
+                  <div class="col-100 price-name"></div>
                 </div>
                 <div class="row">
                   <div class="col-100">

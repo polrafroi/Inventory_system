@@ -67,7 +67,7 @@ $(document).ready(function(){
         type: 'POST',
         data: $("#list_product").serializeArray(),
         success:function(data){
-            $('.price-name').text(data)
+            $('.price-name').text('P' + data)
         }
     });
 

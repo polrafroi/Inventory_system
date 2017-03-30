@@ -110,6 +110,7 @@ class DashboardController extends Controller
     public function viewProducts(){
 
         $products = DB::table('products')->get();
+
 //
 //        $emoji = [];
 //        $files = File::allfiles(public_path('assets\\emoji'));
@@ -125,6 +126,11 @@ class DashboardController extends Controller
         ];
 
 
+
+
+        $data = [
+            'products' => $products
+        ];
 
 
         if($this->isMobile()){
