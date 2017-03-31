@@ -87,6 +87,7 @@ class DashboardController extends Controller
         ];
             if($this->isMobile()){
                 $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
+
                 return $theme->of('mobileproductout',$data)->render();
             }else{
                 $theme = Theme::uses('default')->layout('main')->setTitle('M');
@@ -171,6 +172,22 @@ class DashboardController extends Controller
             $theme = Theme::uses('mobile')->layout('default')->setTitle('dashboard');
             return $theme->of('mobilechat')->render();
         }
+    }
+
+    public function loadCart(){
+
+      $productstemp = DB::table('temp')
+                      ->join('products','products.id','=','temp.product_id')
+                      ->where('user_id',Auth::user()->id)
+                      ->get();
+
+
+      $data = [
+          'temp'     => $productstemp
+      ];
+
+      return view('cartlist',$data);
+
     }
 
 

@@ -93,3 +93,5 @@ Route::get('/products', 'ProductController@viewProductsMobile');
 Route::get('/chatmobile', 'DashboardController@viewchatMobile');
 
 Route::match(array('GET','POST'),'/addcart','ProductController@addToList');
+
+Route::match(array('GET','POST'),'/loadcart','DashboardController@loadCart');

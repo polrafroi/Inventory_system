@@ -1,4 +1,8 @@
-
+<style>
+.toolbar.messagebar.toolbar-hidden {
+    bottom: 44px;
+}
+</style>
 <div class="navbar">
     <div class="navbar-inner">
         <div class="center sliding">Search Bar</div>
@@ -44,3 +48,14 @@
 </div>
 </div>
 </div>
+<script>
+$('.speed-dial-buttons').on('click',function(){
+  $('.tabbar').hide();
+
+})
+
+
+$('body').delegate('.back','click',function(){
+  $('.tabbar').show();
+})
+</script>

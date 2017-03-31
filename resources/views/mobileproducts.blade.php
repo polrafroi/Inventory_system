@@ -43,37 +43,60 @@
 $(document).ready(function(){
 
   var BASEURL = $('#baseURL').val();
-
+  loadCart();
   $('.speed-dial-buttons').on('click',function(){
     $('.tabbar').hide();
-        alert('sdas');
+
+  })
+
+    $('body').delegate('.back','click',function(){
+    $('.tabbar').show();
   })
 
   $('body').delegate('#product','click',function(){
-    $('#quantity').val('')
+    $('#qty').val('')
     $('#product_id').val($(this).data('productid'))
     $('#brand').val($(this).data('brand'))
     $('#category').val($(this).data('category'))
     $('#code').val($(this).data('code'))
     $('#description').val($(this).data('description'))
     $('#unit').val($(this).data('unit'))
-    $('#quantity').val($(this).data('qty'))
+    $('#quantity').val($(this).data('quantity'))
     $('#unit_price').val($(this).data('unitprice'))
+
+
   })
 
   $('body').delegate('#add_cart','click',function(){
+
     $.ajax({
         url : BASEURL + '/addcart',
         type: 'POST',
         data: $("#list_product").serializeArray(),
         success:function(data){
-            $('.price-name').text('P' + data)
+            $('.price-name').text('P' + data);
+            loadCart();
         }
     });
 
   })
 
+
 })
+
+function loadCart(){
+  var BASEURL = $('#baseURL').val();
+  $.ajax({
+      url : BASEURL + '/loadcart',
+      type: 'POST',
+      data: {
+              '_token': $('meta[name="csrf_token"]').attr('content')
+          },
+      success:function(data){
+          $('#cart_list').html(data)
+      }
+  });
+}
 
 
 </script>

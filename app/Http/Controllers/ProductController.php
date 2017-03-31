@@ -64,8 +64,6 @@ class ProductController extends Controller
 
 
 
-
-
     public function addToList(Request $request){
 
 
@@ -85,7 +83,7 @@ class ProductController extends Controller
         $newQty = ($getOldQty - $qty);
         DB::table('products')->where('id',$product_id)->update(['qty'=>$newQty]);
 
-        $total = DB::table('temp')->join('products','products.id','temp.product_id')->select(DB::raw('sum(temp.product_qty * products.unit_price) as Total'))->first();
+        $total = DB::table('temp')->join('products','products.id','temp.product_id')->where('user_id',Auth::user()->id)->select(DB::raw('sum(temp.product_qty * products.unit_price) as Total'))->first();
 
         return $total->Total;
 
